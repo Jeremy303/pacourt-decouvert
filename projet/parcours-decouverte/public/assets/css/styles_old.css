@@ -1,0 +1,1240 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+/******************************************************************************************************************************** */
+/************************************************************ NAVBAR ************************************************************ */
+/******************************************************************************************************************************** */
+
+.img_logo {
+    width: 60px;
+    height: auto;
+    transform: translateY(140px) translateX(-100px); 
+}
+
+.div_logo {
+    height: 100px;
+}
+
+.navbar-haut {
+    height: 100px;
+}
+
+.sidebar {
+    display: none;
+}
+
+.navbar-haut .link {
+    align-self: flex-end;
+}
+
+.navbar-haut .link a {
+    margin-left: 50px;
+    color: #000;
+    font-size: 22px;
+    font-weight: 300;
+    align-self: flex-end;
+    text-decoration: none;
+}
+
+.navbar-haut .link p {
+    color: #000;
+    font-size: 22px;
+    font-weight: 300;
+    align-self: flex-end;
+}
+
+.navbar-haut .link p span {
+    color: #92BC00;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.navbar-haut .link .co {
+   margin: 10px;
+}
+
+.icon-menu {
+    align-self: flex-end; 
+    display: none;
+}
+
+.icon-menu svg {
+    border: 3px solid #92BC00;
+    border-radius: 6px;
+    color: #2D2D2D;
+    margin-bottom: 15px;
+    margin-right: 15px;
+
+}
+
+.icon-menu-croix {
+    align-self: flex-end; 
+    display: none;
+}
+
+.icon-menu-croix svg {
+    border: 3px solid #92BC00;
+    border-radius: 6px;
+    color: #2D2D2D;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.navbar-haut .link a:hover {
+    color: #92BC00;
+}
+
+.navbar-haut .title-logo {
+    margin-left: 70px;
+    font-size: 30px;
+    font-weight: 300;
+    align-self: flex-end;
+    text-decoration: none;
+}
+
+.mini-navbar {
+    background-color: #2D2D2D;
+}
+
+.mini-navbar-tablet {
+    background-color: #2D2D2D;
+    display: none !important;
+}
+
+.mini-navbar-tablet p {
+    margin: 0;
+    color: #92BC00;
+    font-weight: 300;
+    font-size: 22px;
+}
+
+.mini-navbar .link a {
+    text-decoration: none;
+    color: #92BC00;
+    font-weight: 300;
+    font-size: 22px;
+    transition: all 1s;
+}
+
+.mini-navbar .link a:hover {
+    transform: scale(2);
+}
+
+/**************************************************PAGE ACCUEIL SINGLE-PAGE***************************************************** */
+/*************************************************** LISTE DES EVENEMENTS ****************************************************** */
+/********************************************************** PAGE 1 ************************************************************* */
+
+#myTable_wrapper {
+    margin-top: 50px;
+}
+
+/** input de recherche du tableau **/
+#myTable_filter input {
+    margin-bottom: 30px;
+    background: #fff;
+    border-color: #92BC00;
+    box-shadow: none;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: 300;
+    color: #92BC00;
+}
+
+table .th {
+    font-weight: 200;
+}
+
+span.rouge {
+    color: rgb(199, 0, 0);
+}
+
+span.orange {
+    color: rgb(231, 150, 0);
+}
+
+span.vert {
+    color: forestgreen;
+}
+
+span.vert-clair {
+    color: #92BC00;
+}
+
+hr.home {
+    width: 90%;
+    margin: 150px auto;
+    color: #92BC00;
+}
+
+/**************************************************PAGE ACCUEIL SINGLE-PAGE***************************************************** */
+/********************************************** PARCOURS DECOUVERTE C'EST QUOI ? *********************************************** */
+/********************************************************** PAGE 2 ************************************************************* */
+
+.contenu p {
+    font-size: 20px;
+    font-weight: 300;
+    text-justify: auto;
+    color: #2D2D2D;
+}
+
+/**************************************************PAGE ACCUEIL SINGLE-PAGE***************************************************** */
+/********************************************** QUE PROPOSE PARCOURS DECOUVERTE ************************************************ */
+/********************************************************** PAGE 3 ************************************************************* */
+
+.image {
+    background-color: gray;
+    height: 800px;
+    color: #fff;
+    font-size: 100px;
+    align-items: center;
+}
+
+/******************************************************************************************************************************** */
+/*********************************************************** FOOTER ************************************************************* */
+/******************************************************************************************************************************** */
+
+footer .pied-page {
+    background-color: #2D2D2D;
+}
+
+footer p { 
+    margin-top: 400px; 
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.bloc-logo-partenaire {
+    margin-top: 200px;
+}
+
+footer .logo-partenaire {
+    /* background-color: gray; */
+    width: 200px;
+    height: auto;
+}
+
+footer .logo-partenaire img {
+    width: 100%;
+}
+
+footer .link a {
+    font-size: 20px;
+    font-weight: 300;
+    text-decoration: none;
+    color: #92BC00;
+}
+
+footer hr {
+    width: 90%;
+    margin: auto;
+    height: 1px;
+	border: 0;
+	background-color: #92BC00;
+    color: #92BC00;
+}
+
+.liens-footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer p.copyright {
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/******************************************************* PAGE DE DETAIL ********************************************************* */
+/******************************************************************************************************************************** */
+
+.bloc-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+}
+
+.bloc-details .details {
+    border: 1px solid #2D2D2D;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
+}
+
+.bloc-details .bouton {
+    display: none;
+}
+
+.bouton-connexion-presc {
+    margin-top: 30px;
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 25px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+}
+
+.bloc-bouton-admin {
+    display: flex;
+    justify-content: center;
+}
+
+.bouton-admin {
+    margin-top: 30px;
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 25px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+    width: 500px;
+}
+
+.bouton-admin:hover {
+    color: #bdf100;
+}
+
+.bloc-bouton-org {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bloc-bouton-org .bouton-connexion {
+    width: 300px;
+}
+
+.details, p {
+    padding: 10px;
+    margin: 0;
+    line-height: 20px;
+    font-size: 18px;
+    color: #92BC00;
+}
+
+.details span {
+    color: #2D2D2D;
+}
+
+.details.desc {
+    border: 1px solid #2D2D2D;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.details.desc p {
+    line-height: 30px;
+}
+
+#myTableUtilisateur .bouton {
+    padding-right: 0;
+}
+
+/******************************************************************************************************************************** */
+/****************************************************** PAGE DE CONNEXION ******************************************************* */
+/******************************************************************************************************************************** */
+
+.bouton-connexion {
+    margin-top: 30px;
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 25px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+}
+
+.bouton-connexion:hover {
+    color: #bdf100;
+}
+
+.bouton-tableau {
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 18px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+}
+
+.bouton-tableau:hover {
+    color: #bdf100;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#inputEmail, #inputPassword {
+    background: #fff;
+    border-color: #92BC00;
+}
+
+#inputEmail:focus, #inputPassword:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+.mdp-oublie a {
+    font-size: 18px;
+    color: #b1b1b1;
+}
+
+.mdp-oublie a:hover {
+    font-size: 18px;
+    color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/****************************************************** PAGE D'INSCRIPTION ****************************************************** */
+/******************************************************************************************************************************** */
+
+p.text-asterisque {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+span.asterisque {
+    color: rgb(199, 0, 0);
+}
+
+#inscription_form_email, #inscription_form_organisme,
+#inscription_form_nom, #inscription_form_prenom, #inscription_form_partenaire, 
+#role_form_roles, #validate_email_form_email, #password_recovery_form_password_first,
+#password_recovery_form_password_second {
+    border-color: #92BC00;
+}
+
+#inscription_form_email:focus, #inscription_form_organisme:focus,
+#inscription_form_nom:focus, #inscription_form_prenom:focus, #inscription_form_partenaire:focus,
+#role_form_roles:focus, #validate_email_form_email:focus #password_recovery_form_password_first:focus,
+#password_recovery_form_password_second:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/**************************************************** PAGE AJOUT DE CANDIDAT **************************************************** */
+/******************************************************************************************************************************** */
+
+#candidat_form_nom, #candidat_form_prenom {
+    background: #fff;
+    border-color: #92BC00;
+}
+
+#candidat_form_nom:focus, #candidat_form_prenom:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/************************************************* PAGE EVENEMENT ORGANISATEUR ************************************************** */
+/******************************************************************************************************************************** */
+
+.titleEventPast {
+    font-size: 40px;
+    font-weight: 300;
+    color: #92BC00;
+    margin-top: 100px;
+}
+
+/******************************************************************************************************************************** */
+/******************************************** PAGE CREER UN EVENEMENT ORGANISATEUR ********************************************** */
+/******************************************************************************************************************************** */
+
+#evenement_form_nom, #evenement_form_debut,
+#evenement_form_fin, #evenement_form_adresse,
+#evenement_form_codePostal, #evenement_form_ville,
+#evenement_form_places {
+    background: #fff;
+    border-color: #92BC00;
+}
+
+#evenement_form_description {
+    background: #fff;
+    border-color: #92BC00;
+    height: 200px;
+    resize: none;
+}
+#evenement_form_description:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+#evenement_form_nom:focus, #evenement_form_debut:focus,
+#evenement_form_fin:focus, #evenement_form_adresse:focus,
+#evenement_form_codePostal:focus, #evenement_form_ville:focus,
+#evenement_form_places:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/************************************************* PAGE DETAIL ADMINISTRATEUR *************************************************** */
+/******************************************************************************************************************************** */
+
+#hrAdmin {
+    width: 95%;
+    margin: auto;
+    height: 1px;
+	background-color: #92BC00;
+    color: #92BC00;
+}
+
+#myTableUtilisateur_wrapper, #myTableUtilisateurAttente_wrapper {
+    margin-top: 50px;
+} 
+
+#myTableUtilisateurAttente_filter {
+    display: none;
+}
+
+#myTableUtilisateur_filter {
+    display: none;
+}
+
+/** input de recherche du tableau **/
+#myTableUtilisateur_filter input, #myTableUtilisateurAttente_filter input {
+    margin-bottom: 30px;
+    background: #fff;
+    border-color: #92BC00;
+    box-shadow: none;
+}
+
+/******************************************************************************************************************************** */
+/******************************************* PAGE GESTION DES ROLES ADMINISTRATEUR ********************************************** */
+/******************************************************************************************************************************** */
+
+.bi-pen-fill {
+    color: #92BC00;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid rgb(45,45,45);
+}
+
+.nav-item .nav-link {
+    font-size: 18px;
+    color: #92BC00;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: rgb(45,45,45) rgb(45,45,45) #fff;
+}
+
+.square {
+    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
+    border: #92BC00;
+    border-radius: 6px;
+    background: #92BC00;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.square, .nombre {
+    color:#000;
+}
+
+.orange {
+    color: rgb(255, 141, 35);
+}
+
+.red{
+    color: rgb(199, 0, 0);
+}
+
+.green {
+    color: #92BC00;
+}
+
+.table th {
+    background-color: #2D2D2D;
+}
+
+.sorting_asc, .sorting {
+    color: #92BC00; 
+    font-size: 18px;
+}
+
+#myTablePast th {
+    color: #92BC00; 
+    font-size: 18px;
+}
+
+/******************************************************************************************************************************** */
+/***************************************************** PAGE RESET PASSWORD ****************************************************** */
+/******************************************************************************************************************************** */
+
+p .text-reset {
+    text-align: center;
+}
+
+/************* SCROLLBAR DESIGN *************/
+/* ::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #92BC00;
+} */
+/************* SCROLLBAR DESIGN *************/
+
+
+/**_______________________________________________________________________________________________________________________________*/
+/**_______________________________________________________________________________________________________________________________*/
+/**                                                                                                                               */
+/******************************************************************************************************************************** */
+/********************************************************** RESPONSIVE ********************************************************** */
+/******************************************************************************************************************************** */
+/**_______________________________________________________________________________________________________________________________*/
+/**_______________________________________________________________________________________________________________________________*/
+
+
+/** Responsive Desktop **/
+@media screen and (max-width: 1800px)
+{
+    .sorting_asc, .sorting {
+        font-size: 16px;
+    }
+
+    .mini-navbar .link a {
+        font-size: 18px;
+    }
+
+    .img_logo {
+        width: 55px;
+        height: auto;
+        transform: translateY(-130px) translateX(10px); 
+    }  
+
+    .navbar-haut .title-logo {
+        margin-left: 70px;
+        font-size: 27px;
+    }
+    
+    .navbar-haut .link a, .navbar-haut .link p, .navbar-haut .link p span {
+        font-size: 20px;
+    }
+    .navbar-haut .link a {
+        margin-left: 30px;
+    }
+
+    .bouton-connexion-presc {
+        font-size: 23px;
+    }
+    
+}
+
+/** Responsive Laptop L **/
+@media screen and (max-width: 1500px)
+{  
+    .bloc-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bloc-details .details.end {
+        margin-top: 10px;
+        border: 1px solid #2D2D2D;
+        border-radius: 5px;
+    }
+
+    .bloc-details .details.end {
+        margin-top: 20px;
+        border: 1px solid #2D2D2D;
+        border-radius: 5px;
+    }
+
+    .bloc-bouton-connexion-presc {
+        display: none;
+    }
+    
+    .bloc-details .bouton {
+        display: block;
+        margin-top: 60px;
+    }
+
+    .sorting_asc, .sorting {
+        font-size: 16px;
+    }
+
+    .navbar-haut {
+        height: 90px;
+    }
+    
+    .img_logo {
+        width: 50px;
+        height: auto;
+        transform: translateY(-120px) translateX(10px); 
+    }  
+
+    .navbar-haut .title-logo {
+        margin-left: 70px;
+        font-size: 25px;
+    }
+
+    .navbar-haut .link a, .navbar-haut .link p, .navbar-haut .link p span {
+        font-size: 18px;
+    }
+    
+}
+
+/** Responsive Laptop M **/
+@media screen and (max-width: 1300px)
+{
+    .mini-navbar .link a {
+        font-size: 16px;
+    }
+
+    .navbar-haut .link .co {
+        margin: 5px;
+     }
+
+    .navbar-haut .link p {
+        z-index: 999999;
+    }
+
+    #myTableUtilisateur .bouton-tableau {
+        font-size: 16px;
+    }
+}
+
+/** Responsive Laptop & tablet XL **/
+/* @media screen and (max-width: 1024px)
+{
+    .mini-navbar {
+        display: flex;
+        justify-content: end !important;
+    }
+    
+    .mini-navbar .link a {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+} */
+
+/** Responsive all tablet **/
+@media screen and (max-width: 1024px)
+{
+    .img_logo {
+        width: 50px;
+        height: auto;
+        transform: translateY(-115px) translateX(5px); 
+    }  
+  
+    .navbar-haut {
+        height: 83px;
+    }
+
+    .navbar-haut .title-logo {
+        margin-left: 60px;
+        font-size: 25px;
+    }
+
+    .title {
+        font-size: 35px;
+    }
+
+    .mini-navbar {
+        display: none!important;
+    }
+
+    .mini-navbar-tablet {
+       display: block !important;
+       height: 35px;
+    }
+
+    .mini-navbar-tablet p {
+        margin: 0;
+        color: #92BC00;
+        font-weight: 300;
+        font-size: 20px;
+        text-align: center;
+        line-height: 5px;
+    }
+    
+    .mini-navbar .link a {
+        display: none;
+    }
+
+    .navbar-haut .link {
+        display: none;
+    }
+
+    .icon-menu {
+        transform: translateX(99%);
+        display: block;
+    }
+
+    .icon-menu-croix {
+        align-self: flex-end; 
+        display: block;
+    }
+
+    /************************---------------------------- Design du tableau ----------------------------**************************/
+    #myTable, table, thead, tbody, tr, th, td {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    #myTable_filter {
+        display: none;
+    }
+
+    #ancre-1 {
+        margin-bottom: 50px;
+    }
+    
+    td {
+        text-align: end!important;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        bottom: 0;
+        background-color: #2D2D2D;
+        color: #92BC00;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+    }
+
+    tr {
+        margin-bottom: 1rem;
+    }
+    /************************---------------------------- Design du menu latérale droit ----------------------------**************************/ 
+
+    .sidebar {
+        z-index: 99999;
+        width: 50vw;
+        height: 100vh;
+        background: #92BC00;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        transition: right 0.4s ease;
+        right: 0px;
+        overflow-x:scroll;
+    }
+
+    .sidebar .menu {
+        color: #2D2D2D;
+        font-size: 35px;
+        font-weight: 400;
+        line-height: 100px;
+        text-align: center;
+        letter-spacing: 1px;
+        border-bottom: solid 2px #2D2D2D;
+    }
+
+    .sidebar .connexion-info {
+        background: #2D2D2D;
+        color: #92BC00;
+        text-align: center;
+        padding: 5px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .sidebar .deconnection {
+        /* position: absolute; */
+        /* bottom: 0; */
+        /* width: 100%; */
+        margin-top: 50px;
+        background: #2D2D2D;
+        color: #92BC00;
+        text-align: center;
+        padding: 5px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .sidebar .connexion-info a, .sidebar .deconnection a {
+        text-decoration: none;
+        color: #92BC00;
+    }
+
+    .sidebar li {
+        list-style-type: none;
+        background: #2D2D2D;
+    }
+
+    .sidebar .accueil-btn, .sidebar .dashboard-btn {
+        margin-top: 50px;
+        background: #92BC00;
+    }
+
+    .sidebar .accueil-btn>a, .sidebar .dashboard-btn>a {
+        margin-left: 20px;
+        text-decoration: none;
+        font-size: 22px;
+        color: #2D2D2D;
+    }
+
+    .sidebar #accueil-show, .sidebar #dashboard-show {
+        margin-top: 20px;
+    }
+    
+    .sidebar #accueil-show ul li a, .sidebar #dashboard-show ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: #92BC00;
+        line-height: 40px;
+        margin-left: 20px;
+    }
+
+    .bloc-details {
+        grid-template-columns: 1fr;
+    }
+      
+    .bloc-details .details.middle {
+          margin-top: 20px;
+          border: 1px solid #2D2D2D;
+          border-radius: 5px;
+    }
+      
+    .details, p {
+          padding: 10px;
+          margin: 0;
+          line-height: 20px;
+          font-size: 18px;
+          color: #92BC00;
+    }
+      
+    .details.desc {
+        border-radius: 5px;
+    }
+
+    .bloc-bouton-org {
+        display: block;
+    }
+    
+    .bloc-bouton-org .bouton-connexion {
+        width: 100%;
+    }
+
+    .bloc-bouton-admin {
+        display: block;
+    }
+    
+    .bouton-admin {
+        width: 100%;
+    }
+    
+    footer p { 
+        font-size: 25px;
+    }
+    
+    footer .link a {
+        font-size: 16px;
+    }
+    
+    footer p.copyright {
+        font-size: 16px;
+    }
+
+    td.bouton::before {
+        background-color: transparent;
+    }
+}
+
+
+/** Responsive under tablet **/
+@media screen and (max-width: 700px)
+{
+    .img_logo {
+        width: 45px;
+        height: auto;
+        transform: translateY(-105px) translateX(5px); 
+    }  
+  
+    .navbar-haut {
+        height: 80px;
+    }
+
+    .navbar-haut .title-logo {
+        margin-left: 55px;
+        font-size: 23px;
+    }
+
+    .mini-navbar-tablet {
+        height: 30px;
+     }
+
+    .mini-navbar-tablet p {
+        font-size: 18px;
+        line-height: 10px;
+    }
+
+    .title, .titleEventPast {
+        font-size: 30px;
+    }
+
+    .contenu p {
+        font-size: 18px;
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        width: 100vw;
+        z-index: 99999;
+        height: 100vh;
+        background: #92BC00;
+        cursor: pointer;
+    }
+
+    .icon-menu-croix {
+        z-index: 999999;
+    }
+    
+    .bloc-details {
+        grid-template-columns: 1fr;
+    }
+      
+    .details, p {
+        padding: 5px;
+        line-height: 20px;
+        font-size: 16px;
+        color: #92BC00;
+    }
+      
+    .details.desc {
+        border-radius: 5px;
+    }
+
+    footer p { 
+        font-size: 20px;
+    }
+
+    footer .logo-partenaire {
+        width: 150px;
+    }
+    label {
+        font-size: 18px;
+    }
+
+    td::before {
+        width: 150px;
+    }
+
+    .bouton-connexion {
+        font-size: 20px;
+    }
+}
+
+/** Responsive mobile L **/
+@media screen and (max-width: 425px)
+{
+    .title, .titleEventPast {
+        font-size: 23px;
+    }
+}
+
+
+/** Responsive mobile S **/
+@media screen and (max-width: 360px)
+{ 
+    .img_logo {
+        width: 35px;
+        height: auto;
+        transform: translateY(-82px) translateX(5px); 
+    }  
+  
+    .navbar-haut {
+        height: 55px;
+    }
+
+    .navbar-haut .title-logo {
+        margin-left: 45px;
+        font-size: 20px;
+    }
+
+    .mini-navbar-tablet {
+        height: 30px;
+     }
+
+    .mini-navbar-tablet p {
+        font-size: 14px;
+        line-height: 22px;
+
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw;
+        z-index: 99999;
+        height: 100vh;
+        background: #92BC00;
+        cursor: pointer;
+    }
+    
+    .icon-menu svg {
+        margin-right: 10px;
+        margin-bottom: 7px;
+        width: 40px;
+        height: auto;
+    
+    }
+    
+    .icon-menu-croix svg {  
+        margin-right: 10px;
+        margin-bottom: 7px;
+        width: 40px;
+        height: auto;
+    }
+
+    .sidebar .menu {
+        font-size: 25px;
+        line-height: 70px;
+    }
+
+    .sidebar .connexion-info {
+        font-size: 18px;
+    }
+
+    .sidebar .deconnection {
+        font-size: 18px;
+    }
+
+    .sidebar .connexion-info a, .sidebar .deconnection a {
+        text-decoration: none;
+        color: #92BC00;
+    }
+
+    .sidebar .accueil-btn, .sidebar .dashboard-btn {
+        margin-top: 30px;
+    }
+
+    .sidebar .accueil-btn>a, .sidebar .dashboard-btn>a {
+        font-size: 18px;
+
+    }
+
+    .sidebar #accueil-show, .sidebar #dashboard-show {
+        margin-top: 20px;
+    }
+    
+    .sidebar #accueil-show ul li a, .sidebar #dashboard-show ul li a {
+        font-size: 16px;
+    }
+
+    .title, .titleEventPast {
+        font-size: 20px;
+    }
+}
+
+/** Responsive mobile XS **/
+@media screen and (max-width: 280px)
+{ 
+    .img_logo {
+        width: 30px;
+        height: auto;
+        transform: translateY(-70px) translateX(5px); 
+    }  
+  
+    .navbar-haut {
+        height: 45px;
+    }
+
+    .navbar-haut .title-logo {
+        margin-left: 40px;
+        font-size: 16px;
+    }
+
+    .mini-navbar-tablet {
+        height: 30px;
+     }
+
+    .mini-navbar-tablet p {
+        font-size: 14px;
+        line-height: 22px;
+
+    }
+    
+    .icon-menu svg {
+        margin-right: 10px;
+        margin-bottom: 5px;
+        width: 35px;
+        height: auto;
+    
+    }
+    
+    .icon-menu-croix svg {  
+        margin-right: 10px;
+        margin-bottom: 5px;
+        width: 35px;
+        height: auto;
+    }
+
+    .sidebar .menu {
+        font-size: 20px;
+        line-height: 50px;
+    }
+
+    .sidebar .connexion-info {
+        font-size: 16px;
+    }
+
+    .sidebar .deconnection {
+        font-size: 16px;
+    }
+
+    .sidebar .connexion-info a, .sidebar .deconnection a {
+        text-decoration: none;
+        color: #92BC00;
+    }
+
+    .sidebar .accueil-btn, .sidebar .dashboard-btn {
+        margin-top: 20px;
+    }
+
+    .sidebar .accueil-btn>a, .sidebar .dashboard-btn>a {
+        font-size: 16px;
+
+    }
+
+    .sidebar #accueil-show, .sidebar #dashboard-show {
+        margin-top: 20px;
+    }
+    
+    .sidebar #accueil-show ul li a, .sidebar #dashboard-show ul li a {
+        font-size: 14px;
+    }
+}
+
+

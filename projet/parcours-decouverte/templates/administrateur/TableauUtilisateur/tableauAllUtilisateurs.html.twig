@@ -1,0 +1,72 @@
+{# Liste de tout les utilisateurs #}
+<div class="col-12 d-flex justify-content-center">
+    <div class="col-12 collapse" id="ContenuTableauAllUtilisateurs">
+        <table id="myTableUtilisateur" class="table display">
+            <thead>
+                <tr class="align-middle">
+                    <th scope="col" class="fw-normal" width="300px">Prénom</th>
+                    <th scope="col" class="fw-normal" width="300px">Nom</th>
+                    <th scope="col" class="fw-normal" width="400px">Organisme</th>
+                    <th scope="col" class="fw-normal" width="300px">Rôle</th>
+                    <th scope="col" class="fw-normal" width="300px">Statut</th>
+                    <th scope="col" class="fw-normal" width="200px"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {# liste des comptes confirmé #}
+                {% for liste in listeRole %}
+                <tr class="align-middle">
+                    <td data-label="Prénom">{{ liste.prenom }}</td> {# prénom de l'utilisateur #}
+                    <td data-label="Nom">{{ liste.nom }}</td>{# nom de l'utilisateur #}
+                    <td data-label="Organisme" class="{{liste.partenaire?"":"text-danger fw-bold"}}">{{liste.partenaire?liste.partenaire.organisme:liste.organisme }}</td>{# nom de l'organisme de l'utilisateur #}
+                    <td data-label="Rôle">{{ liste.roles.0 }}</td> {# rôle de l'utilisateur #}
+                    <td data-label="Statut">
+
+                        {# **********************************************
+                        status:
+                        *************************************************
+                        0: créé,
+                        1: validé (admin),
+                        2: mot de passe saisi,
+                        3: connecté au moins une fois,
+                        4: refusé
+                        *************************************************#}
+                        {# bloc de condition pour afficher un message
+                        texte explicite à la place de l'integer en database #}
+                        {% if liste.status == 0 %}
+                        <div class="red">En attente de validation</div>
+                        {% endif %}
+                        {% if liste.status == 1 %}
+                        <div class="orange">Compte validé</div>
+                        {% endif %}
+                        {% if liste.status == 2 %}
+                        <div class="orange">Mot de passe saisi</div>
+                        {% endif %}
+                        {% if liste.status == 3 %}
+                        <div class="green">Compte actif</div>
+                        {% endif %}
+                    </td>
+                    <td class="text-end" style="white-space: nowrap">
+                        <a href="{{ path('administrateur_send_invitation', {'user': liste.id}) }}">
+                            <button class="btn bouton-tableau m-0">
+                                <i class="bi bi-envelope-check" title="Renvoyer l'invitation"></i>
+                            </button>
+                        </a> 
+                        <a href="{{ path('administrateur_modifier_role', {'id': liste.id}) }}">
+                            <button class="btn bouton-tableau m-0">
+                                <i class="bi bi-pen" title="Modifier le rôle"></i>
+                            </button>
+                        </a>
+                        <a href="{{ path('accueil')~'?_switch_user='~liste.email }}">
+                            <button class="btn btn-warning m-0">
+                                    <i class="bi bi-file-person" title="Switcher" ></i>
+                            </button>
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{% if app.user %}
+{% if ( "ROLE_PRESCRIPTEUR" in app.user.roles) %}
+
+<div class="col-xl-auto col-lg-auto link">
+    <a class="ps-5" href="{{ path('prescripteur') }}">Prescripteur</a> 
+</div>   
+
+{% endif %}
+{% endif %}

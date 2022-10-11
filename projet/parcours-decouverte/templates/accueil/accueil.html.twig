@@ -1,0 +1,361 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Accueil
+{% endblock %}
+
+{% block body %}
+  {# EVENEMENTS EN COURS ET A VENIR #}
+  <div class="col-12 justify-content-center">
+    <h2 class="title mt-5" id="ancre-1">
+      Liste des évènements à venir !!
+    </h2>
+  </div>
+
+  <div class="col-12 mb-5">
+    <div class="table-responsive">
+      {% if is_granted('ROLE_ORGANISATEUR') %}
+        <div class="text-end">
+          <a href="/organisateur/creer" class="btn btn-primary">
+            Ajouter un événement
+          </a>
+        </div>
+      {% endif %}
+      <table id="tableau_evenements"
+        class="datatable-event table table-hover display">
+        <thead>
+          <tr class="align-middle">
+            <th scope="col" class="fw-normal">
+              Date de début
+            </th>
+            <th scope="col" class="fw-normal">
+              Date de fin
+            </th>
+            <th scope="col" class="fw-normal">
+              Durée
+            </th>
+            <th scope="col" class="fw-normal">
+              Organisme
+            </th>
+            <th scope="col" class="fw-normal">
+              Évènement
+            </th>
+            <th scope="col" class="fw-normal">
+              Lieu
+            </th>
+            <th scope="col" class="fw-normal">
+              Jours restant(s)
+            </th>
+            <th scope="col" class="fw-normal">
+              Places disponibles
+            </th>
+            <th scope="col" class="fw-normal">
+              Plus de détails
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {# evt avec boucle pour l'affichage des évènements #}
+          {% for evt in evenements %}
+            <tr class="align-middle">
+              <td data-label="Date de début">
+                {{ evt.debut|date('d/m/Y') }}
+              </td> {# date de début #}
+              <td data-label="Date de fin">
+                {{ evt.fin|date('d/m/Y') }}
+              </td> {# date de fin #}
+              <td data-label="Durée" class="sorting_1">
+                {# durée de l'évènement #}
+                {# Calcul de différence entre 2 dates à refaire au propre dans un controller ou model #}
+                {% set difference = evt.debut.diff(date(evt.fin)) %}
+                {% set dateDiff = difference.days %}
+                {% if dateDiff == 1 or evt.debut == evt.fin %}
+                  {{ dateDiff }} jour
+                {% else %}
+                  {{ dateDiff + 1 }} jours
+                {% endif %}
+              </td>
+              <td data-label="Organisme" class="sorting_1">
+                {{ evt.user.partenaire ? evt.user.partenaire.organisme : '' }}
+              </td> {# nom de l'organisme #}
+              <td data-label="Évènement" class="sorting_1">
+                {{ evt.nom }}
+              </td> {# nom de l'évènement #}
+              <td data-label="Lieu" class="sorting_1">
+                {{ evt.ville }}
+              </td> {# ville ou a lieu l'évènement #}
+              <td data-label="Jours restant(s)" class="sorting_1">
+                {# nombre de jour restant avant l'évènement #}
+                {# Calcul de différence entre 2 dates à refaire au propre dans un controller ou model #}
+                {% set difference = evt.debut.diff(date()) %}
+                {# {{ dump(difference) }} #}
+                {% set dateDiffdays = difference.days %}
+                {% set dateDiffhours = difference.h %}
+                {% set dateInvert = difference.invert %}
+
+                {% if dateInvert == 0 %}
+                  <span>Évènement en cours</span>
+                {% elseif dateDiffdays == 0 and dateInvert == 1 %}
+                  <span>Évenement prévu demain</span>
+                {% elseif dateDiffdays != 0 %}
+                  <span>{{ dateDiffdays + 1 }} jours</span>
+                {% endif %}
+              </td>
+              {% set pl = evt.places - (evt.candidats|length) %}
+              {% if pl <= 0 %}
+                <td data-label="Place disponible" class="sorting_1">
+                  <span class="rouge">session pleine !</span>
+                </td> {# plus de place disponible #}
+              {% elseif pl < 10 %}
+                <td data-label="Place disponible" class="sorting_1">
+                  <span class="orange">
+                    {{ evt.places - (evt.candidats|length) }}
+                  </span>
+                </td> {# nombre de place disponible -> nombre de place moins les inscrits #}
+              {% else %}
+                <td data-label="Place disponible" class="sorting_1">
+                  <span class="green">
+                    {{ evt.places - (evt.candidats|length) }}
+                  </span>
+                </td> {# nombre de place disponible -> nombre de place moins les inscrits #}
+              {% endif %}
+              <td data-label="Plus de détails" class="sorting_1">
+                <a href="{{
+                  path(
+                    'detail',
+                    {
+                      evenement: evt.id
+                    }
+                  )
+                  }}"
+                  class="text-decoration-none">
+                  <span class="vert-clair">En savoir +</span>
+                </a>
+              </td> {# plus de détails de l'évènement #}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {# EVENEMENTS PASSÉS #}
+  {% if is_granted('ROLE_ADMIN', 'ROLE_ORGANISATEUR') %}
+    <div class="col-12 justify-content-center">
+      <h2 class="title mt-5" id="ancre-1">
+        Liste des événements passés
+      </h2>
+    </div>
+    <div class="table-responsive">
+      <table id="tableau_evenements_passes"
+        class="datatable-event table table-hover display">
+        <thead>
+          <tr class="align-middle">
+            <th scope="col" class="fw-normal" width="200px">
+              Date de début
+            </th>
+            <th scope="col" class="fw-normal" width="200px">
+              Date de fin
+            </th>
+            <th scope="col" class="fw-normal" width="200px">
+              Durée
+            </th>
+            <th scope="col" class="fw-normal" width="400px">
+              Organisme
+            </th>
+            <th scope="col" class="fw-normal" width="400px">
+              Évènement
+            </th>
+            <th scope="col" class="fw-normal" width="300px">
+              Lieu
+            </th>
+            <th scope="col" class="fw-normal" width="200px">
+              Plus de détails
+            </th>
+            <th scope="col" class="fw-normal text-end" width="200px">
+              Nombre de participants
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {# evt avec boucle pour l'affichage des évènements #}
+          {% for evt in evenements_passes %}
+            <tr class="align-middle">
+              <td data-label="Date de début">
+                {{ evt.debut|date('d/m/Y') }}
+              </td> {# date de début #}
+              <td data-label="Date de fin">
+                {{ evt.fin|date('d/m/Y') }}
+              </td> {# date de fin #}
+              <td data-label="Durée" class="sorting_1">
+                {# durée de l'évènement #}
+                {# Calcul de différence entre 2 dates à refaire au propre dans un controller ou model #}
+                {% set difference = evt.debut.diff(date(evt.fin)) %}
+                {% set dateDiff = difference.days %}
+                {% if dateDiff == 1 or evt.debut == evt.fin %}
+                  {{ dateDiff }} jour
+                {% else %}
+                  {{ dateDiff }} jours
+                {% endif %}
+              </td>
+              <td data-label="Organisme" class="sorting_1">
+                {{ evt.user.partenaire ? evt.user.partenaire.organisme : '' }}
+              </td> {# nom de l'organisme #}
+              <td data-label="Évènement" class="sorting_1">
+                {{ evt.nom }}
+              </td> {# nom de l'évènement #}
+              <td data-label="Lieu" class="sorting_1">
+                {{ evt.ville }}
+              </td> {# ville ou a lieu l'évènement #}
+              <td data-label="Plus de détails" class="sorting_1">
+                <a href="{{
+                  path(
+                    'detail',
+                    {
+                      evenement: evt.id
+                    }
+                  )
+                  }}"
+                  class="text-decoration-none">
+                  <span class="vert-clair">En savoir +</span>
+                </a>
+              </td> {# plus de détails de l'évènement #}
+              {% set pl = evt.places - (evt.candidats|length) %}
+              {% if pl <= 0 %}
+                <td data-label="Place disponible" class="text-end sorting_1">
+                  <span class="rouge">session pleine !</span>
+                </td> {# plus de place disponible #}
+              {% elseif pl < 10 %}
+                <td data-label="Place disponible" class="text-end sorting_1">
+                  <span class="orange">{{ evt.candidats|length }}</span>
+                </td> {# nombre de place disponible -> nombre de place moins les inscrits #}
+              {% else %}
+                <td data-label="Place disponible" class="text-end sorting_1">
+                  <span class="green">{{ evt.candidats|length }}</span>
+                </td> {# nombre de place disponible -> nombre de place moins les inscrits #}
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+
+  {% if is_granted('ROLE_ORGANISATEUR') and not is_granted('ROLE_ADMIN') %}
+    <div class="col-12 justify-content-center">
+      <h2 class="title mt-5" id="ancre-1">
+        Liste des événements passés
+      </h2>
+    </div>
+    <div class="table-responsive">
+      <table id="tableau_evenements_passes"
+        class="datatable-event table table-hover display">
+        <thead>
+          <tr class="align-middle">
+            <th scope="col" class="fw-normal" width="200px">
+              Date de début
+            </th>
+            <th scope="col" class="fw-normal" width="200px">
+              Date de fin
+            </th>
+            <th scope="col" class="fw-normal" width="200px">
+              Durée
+            </th>
+            <th scope="col" class="fw-normal" width="400px">
+              Organisme
+            </th>
+            <th scope="col" class="fw-normal" width="400px">
+              Évènement
+            </th>
+            <th scope="col" class="fw-normal" width="300px">
+              Lieu
+            </th>
+            <th scope="col" class="fw-normal" width="200px">
+              Plus de détails
+            </th>
+            <th scope="col" class="fw-normal" width="200px">
+              Jours restant(s)
+            </th>
+            <th scope="col" class="fw-normal text-end" width="200px">
+              Nombre de participants
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {# evt avec boucle pour l'affichage des évènements #}
+          {% for evt in evenements_passes %}
+            <tr class="align-middle">
+              <td data-label="Date de début">
+                {{ evt.debut|date('d/m/Y') }}
+              </td> {# date de début #}
+              <td data-label="Date de fin">
+                {{ evt.fin|date('d/m/Y') }}
+              </td> {# date de début #}
+              <td data-label="Durée" class="sorting_1">
+                {# durée de l'évènement #}
+                {# Calcul de différence entre 2 dates à refaire au propre dans un controller ou model #}
+                {% set difference = evt.debut.diff(date(evt.fin)) %}
+                {% set dateDiff = difference.days %}
+                {% if dateDiff == 1 or evt.debut == evt.fin %}
+                  {{ dateDiff }} jour
+                {% else %}
+                  {{ dateDiff }} jours
+                {% endif %}
+              </td>
+              <td data-label="Organisme" class="sorting_1">
+                {{ evt.user.partenaire ? evt.user.partenaire.organisme : '' }}
+              </td> {# nom de l'organisme #}
+              <td data-label="Évènement" class="sorting_1">
+                {{ evt.nom }}
+              </td> {# nom de l'évènement #}
+              <td data-label="Lieu" class="sorting_1">
+                {{ evt.ville }}
+              </td> {# ville ou a lieu l'évènement #}
+              <td data-label="Plus de détails" class="sorting_1">
+                <a href="{{
+                  path(
+                    'detail',
+                    {
+                      evenement: evt.id
+                    }
+                  )
+                  }}"
+                  class="text-decoration-none">
+                  <span class="vert-clair">En savoir +</span>
+                </a>
+              </td> {# plus de détails de l'évènement #}
+              <td data-label="Jours restant(s)" class="sorting_1">
+                {# nombre de jour restant avant l'évènement #}
+                {# Calcul de différence entre 2 dates à refaire au propre dans un controller ou model #}
+                {% set difference = evt.debut.diff(date()) %}
+                {# {{ dump(difference) }} #}
+                {% set dateDiff = difference.days + 1 %}
+                {% if date() == evt.debut %}
+                  aujourd'hui
+                {% elseif dateDiff < 2 %}
+                  {{ dateDiff }} jour
+                {% else %}
+                  {{ dateDiff }} jours
+                {% endif %}
+              </td>
+              {% set pl = evt.places - (evt.candidats|length) %}
+              {% if pl <= 0 %}
+                <td data-label="Place disponible" class="text-end sorting_1">
+                  <span class="rouge">session pleine !</span>
+                </td> {# plus de place disponible #}
+              {% elseif pl < 10 %}
+                <td data-label="Place disponible" class="text-end sorting_1">
+                  <span class="orange">{{ evt.candidats|length }}</span>
+                </td> {# nombre de place disponible -> nombre de place moins les inscrits #}
+              {% else %}
+                <td data-label="Place disponible" class="text-end sorting_1">
+                  <span class="green">{{ evt.candidats|length }}</span>
+                </td> {# nombre de place disponible -> nombre de place moins les inscrits #}
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+  <hr class="home" />
+{% endblock %}

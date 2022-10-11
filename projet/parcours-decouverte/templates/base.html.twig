@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Parcour Découverte{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    {# // <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>     #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
+    {% block stylesheets %}
+    {% endblock %}
+
+</head>
+
+<body>
+{% if is_granted('IS_IMPERSONATOR') %}
+    <div class="alert alert-danger text-center">
+        <a href="{{ impersonation_exit_path(path('accueil') ) }}">Exit impersonation</a>
+    </div>
+{% endif %}
+
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="container-fluid">
+    <img height="80" class="img-fluid img_logo" src="/images/logo_parcours_decouverte.png" alt="logo parcours découverte">
+    <a class="navbar-brand ml-5 pl-5" href="/" style="padding-left: 60px;">arcours découverte</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="nav-item px-2">
+                <a class="nav-link {{ activeMenu(["accueil"]) }}" aria-current="page" href="/">Tous les événements</a>
+            </li>
+        {% endif %}
+        
+        
+        {% if is_granted('ROLE_ORGANISATEUR') and not is_granted('ROLE_ADMIN') %}
+            <li class="nav-item px-2">
+                <a class="nav-link " aria-current="page" href="/mes_evenements">Mes événements</a>
+            </li>
+            {# <li class="nav-item px-2">
+                <a class="nav-link" aria-current="page" href="{{ path('administrateur_creer_evenement') }}">
+                    Ajouter un événement
+                </a>
+            </li> #}
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item px-2">
+                <a class="nav-link {{ activeMenu(["utilisateurs_liste"]) }}" aria-current="page" href="{{ path('utilisateurs_liste') }}">Utilisateurs</a>
+            </li>
+        {% endif %}
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="nav-item px-2">
+                <a class="nav-link" aria-current="page" href="/statistique">Statistiques</a>
+            </li>
+        {% endif %}
+    </ul>
+    <form class="d-flex">
+        {% if app.user %} 
+            <div class="col link text-end">
+                {{ app.user.email }}<br />  
+                <a class="nav-link p-0" href="{{ path('app_logout') }}">
+                    Se déconnecter
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </div>
+         {% else %}
+            <div class="col link text-end">
+                <a class="nav-link p-0" href="{{ path('app_login') }}">Se connecter</a> 
+                <a class="nav-link p-0" href="{{ path('inscription') }}">S'inscrire</a> 
+            </div>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="col-12 d-flex justify-content-evenly mini-navbar py-1">
+    <div class="row-4 link d-none">
+    </div>
+</div>
+
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            {% block body %}
+
+            {% endblock %}
+
+            <footer class="col-12 footer-class">
+                {# affichage des logos des partenariats #}
+                <div class="row">
+                    <div class="col-12 justify-content-center mb-5 d-none">
+                        <p>Avec la participation de..(vos partenariats en image)</p> 
+                    </div>
+
+                    <div class="col-12  bloc-logo-partenaire">
+                        <div class="row">
+                            <div class="col-4 text-center"><img src="/images/logos/afpa.png" alt="logo-afpa" class="" style="height: 100px;"></div>
+                            <div class="col-4 text-center"><img src="/images/logos/region.png" alt="logo-region" class="" style="height: 100px;"></div>
+                            <div class="col-4 text-center"><img src="/images/logos/europe.jpg" alt="logo-europe" class="" style="height: 100px;"></div>
+                        </div>
+                    </div>
+                    {# affichage des logos des partenariats #}
+
+                    {# pied de page #}
+                    <div class="pied-page mt-5 d-flex">
+                        <div class="col-12 link text-center">
+                            {# liens utiles #}
+                            <div class="liens-footer d-none">
+                                <a href="#">Crédits - </a>
+                                <a href="#">Mentions légales - </a>
+                                <a href="#">Politique de protection de données - </a>
+                                <a href="#">Conditions générales d'utilisation</a> 
+                            </div>
+                            {# liens utiles #}
+                        
+                            <hr>
+
+                            {# copyright #}
+                            <div class="col-12 d-flex justify-content-center">
+                                <p class="text-center copyright">Copyright © 2021 Parcours Découverte</p>
+                            </div>
+                            {# copyright #}
+                        </div>
+                    </div>
+
+                    </div>
+                    {# pied de page #}
+                </div>
+
+            </footer>
+
+        </div>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap5.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/datetime-moment.js"></script>
+    
+    <script type="text/javascript" src="/js/script.js"></script>
+
+    {% block javascripts %}
+    {% endblock %}
+</body>
+
+</html>

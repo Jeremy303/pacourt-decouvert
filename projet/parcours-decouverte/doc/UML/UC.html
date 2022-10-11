@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <style>
+    tr>td:first-child {cursor: grab;}
+  </style>
+  <script defer>
+    function copy(id) {
+      const el = document.createRange();
+      el.selectNode(document.getElementById(id));
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(el);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+    }
+  </script>
+  <title>Diagramme de cas d'activitée</title>
+</head>
+<body>
+  <section class="card border-warning m-5">
+    <article class="card-body">
+      <h3 class="card-title">Rappel des specs</h3>
+      <p class="card-text">
+        L'application propose de gérer l'organisation des journées "parcours découverte". <br>
+        L'application sera réalisée sous la forme d'un site web, accessible à partir d'un nom de domaine, par exemple  www.parcours-decouverte.fr
+      </p>
+      <h4 class="card-title">Sur la partie publique du site :</h4>
+      <p class="text-card">
+        La liste des prochains évènements, avec en détail la date prévue, le nom de l'organisme et le nombre de places disponibles.
+      </p>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">Une page de connexion</li>
+        <li class="nav-item">Une page d'inscription</li>
+      </ul><br>
+      <p class="card-text">Pour s'inscrire, il est demandé une adresse mail est un nom  d'organisme. Les inscriptions sont validées par l'administrateur du site. L'administrateur reçoit un mail à chaque nouvelle inscription. Dans la  partie du site qui lui est réservée, l'administrateur peut valider ou  refuser les demandes.
+      </p>
+      <h4>Profils des personnes connectées :</h4>
+      <h5 class="card-title">Rôle administrateur :</h5>
+      <p class="card-text">Gère les personnes autorisées à se connecter au site Gère les évènements Gère des candidats</p>
+      <h5 class="card-title">Rôle organisme :</h5>
+      <p class="card-text">L'organisme peut gérer (ajouter, modifier, supprimer) ses évènements. Il voit, sans pouvoir les modifier les évènements posés par d'autres  organismes.
+      </p>
+
+      <h5 class="card-title">Rôle prescripteur :</h5>
+      <p class="card-text">Il peut inscrire des personnes à un évènement donné. Lors de  l'inscription, le prescripteur doit saisir le nom et le prénom de la  personne. Lors de l'inscription, le prescripteur ne voit pas les personnes  inscrites par d'autres organismes. Il voit le nombre de places  disponibles et les candidats qu'il a lui-même inscrits.
+      </p>
+      <h4></h4>
+    </article>
+  </section>
+  <section class="card border-warning m-5">
+    <div class="card-body">
+  <h4 class="card-title">Liste des besoins fonctionnels</h4>
+  <p class="card-text">Listes des cas d'utilisations, de ces acteurs et de ces actions. Cela englobe la partie public et priver. </p>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Cas d'utilisation</th>
+        <th scope="col">Acteurs principal et secondaire</th>
+        <th scope="col">Message émis / reçue </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-success">
+        <td scope="row" onclick="copy('cop1')" id="cop1">Inscription</td>
+        <td>candidats</td>
+        <td>S'inscrire : permet de s'inscrire</td>
+      </tr>
+      <tr class="table-success">
+        <td scope="row"onclick="copy('cop2')" id="cop2">Authentification</td>
+        <td>candidats</td>
+        <td>Se connectée : permet de se connectée</td>
+      </tr>
+      <tr class="table-success">
+        <td scope="row"onclick="copy('cop3')" id="cop3">Liste des événements</td>
+        <td>candidats</td>
+        <td>Voir Sessions : Vois les sessions proches</td>
+      </tr>
+      <tr class="table-success">
+        <td scope="row"onclick="copy('cop4')" id="cop4">Détails des événements</td>
+        <td>candidats</td>
+        <td>Evenement détaillé : (date - contenue - etc..)</td>
+      </tr>
+      <tr class="table-light">
+        <td scope="row"onclick="copy('cop5')" id="cop5">Modifier - ajoutée - supprimer ces événements (3 cas)</td>
+        <td>organisme</td>
+        <td>affectation des événements (seulement les sien)</td>
+      </tr>
+      <tr class="table-light">
+        <td scope="row"onclick="copy('cop8')" id="cop8">Conssultée les événements en cours</td>
+        <td>organisme</td>
+        <td>Vois les sessions</td>
+      </tr>
+      <tr class="table-warning">
+        <td scope="row"onclick="copy('cop6')" id="cop6">Conssultée les événements en cours</td>
+        <td>prescripteur</td>
+        <td>Voir place restante voir ces candidats</td>
+      </tr>
+      <tr class="table-warning">
+        <td scope="row"onclick="copy('cop7')" id="cop7">positionnement de candidat</td>
+        <td>prescripteur</td>
+        <td>Inscrit des candidats sur les evenement</td>
+      </tr>
+      <tr class="table-primary">
+        <td scope="row"onclick="copy('cop9')" id="cop9">Modifier - ajoutée - supprimer les événements (3 cas)</td>
+        <td>administrateur</td>
+        <td>affectation des événements (sans restriction)</td>
+      </tr>
+      <tr class="table-primary">
+        <td scope="row"onclick="copy('cop10')" id="cop10">gestion des candidats</td>
+        <td>administrateur</td>
+        <td>affectation sur le candidat</td>
+      </tr>
+      <tr class="table-primary">
+        <td scope="row"onclick="copy('cop11')" id="cop11">contrôle des inscriptions</td>
+        <td>administrateur</td>
+        <td>création de candidat</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="card-text">Conssultée et avoir une liste d'événements sont deux relations sensiblement identique mais ne faisant pas partie du même back office, l'un public, l'autre privée.
+  </p>
+  <p class="card-text">
+    Ont part du principe que le cas d'utilisation part d'un test concluant.
+  </p>
+</div>
+  </section>
+  <section class="card border-warning m-5 p-2">
+    <h3 class="card-header">diagramme de cas d'utilisation</h3>
+    <figure class="row">
+      <img class="d-block col-auto" src="assets/img/DCU.png" alt="diagramme de cas d'utilisation" preserveAspectRatio="xMidYMid slice">
+    </figure>
+    <p class="card-text">
+      <bold class="text-warning">Extends</bold> est une directive utilisée pour définir une relation optionnelle et non obligatoire : <br>
+      exemple, la modification ou la suppression d'un événements, celle ci ne peu existée sans l'événements on devrais donc partir sur une directive <bold class="text-warning">Include</bold> Sauf qu'il n'est pas obligatoire aux cours d'un cycle de modifier un événement, c'est donc une directive optionnelle.
+    </p>
+  </section>
+</body>
+</html>

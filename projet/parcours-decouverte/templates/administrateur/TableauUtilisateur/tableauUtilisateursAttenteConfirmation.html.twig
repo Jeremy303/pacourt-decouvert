@@ -1,0 +1,29 @@
+{# Liste des utilisateurs en attente de confirmation #}
+<div class="col-12 d-flex justify-content-center">
+    <div class="col-12 collapse" id="ContenuTableauUtilisateursAttente">
+        <table id="myTableUtilisateurAttente" class="table display">
+            <thead>
+                <tr class="align-middle">
+                    <th scope="col" class="fw-normal" width="300px">Prénom</th>
+                    <th scope="col" class="fw-normal" width="400px">Nom</th>
+                    <th scope="col" class="fw-normal" width="300px">Organisme</th>
+                    <th scope="col" class="fw-normal" width="300px">Rôle</th>
+                    <th scope="col" class="fw-normal" width="200px">Valider le compte</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {# liste des comptes en attente de validation #}
+                {% for liste in listeAValider %}
+                <tr class="align-middle">
+                    <td data-label="Prénom">{{ liste.prenom }}</td> {# prénom de l'utilisateur #}
+                    <td data-label="Nom">{{ liste.nom }}</td>{# nom de l'utilisateur #}
+                    <td data-label="Organisme">{{liste.partenaire?liste.partenaire.organisme:"" }}</td>{# nom de l'organisme de l'utilisateur #}
+                    <td data-label="Rôle">{{ liste.roles.0 }}</td> {# rôle de l'utilisateur #}
+                    <td data-label="Valider le compte" class="text-end"><a href="{{ path('administrateur_valider_role', {'user': liste.id}) }}">En attente de validation</a></td> {# lien pour confirmer le rôle #}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+/******************************************************************************************************************************** */
+/************************************************************ NAVBAR ************************************************************ */
+/******************************************************************************************************************************** */
+
+.img_logo {
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    top: 5px;
+    /* transform: translateY(-0px) translateX(0px);  */
+}
+
+.div_logo {
+    height: 100px;
+}
+
+.navbar-haut {
+    height: 50px;
+}
+
+.sidebar {
+    display: none;
+}
+
+.navbar-haut .link {
+    align-self: flex-end;
+}
+
+.navbar-haut .link a {
+    margin-left: 50px;
+    color: #000;
+    font-size: 22px;
+    font-weight: 300;
+    align-self: flex-end;
+    text-decoration: none;
+}
+
+.navbar-haut .link p {
+    color: #000;
+    font-size: 22px;
+    font-weight: 300;
+    align-self: flex-end;
+}
+
+.navbar-haut .link p span {
+    color: #92BC00;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.navbar-haut .link .co {
+   margin: 10px;
+}
+
+.icon-menu {
+    align-self: flex-end; 
+    display: none;
+}
+
+.icon-menu svg {
+    border: 3px solid #92BC00;
+    border-radius: 6px;
+    color: #2D2D2D;
+    margin-bottom: 15px;
+    margin-right: 15px;
+
+}
+
+.icon-menu-croix {
+    align-self: flex-end; 
+    display: none;
+}
+
+.icon-menu-croix svg {
+    border: 3px solid #92BC00;
+    border-radius: 6px;
+    color: #2D2D2D;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.navbar-haut .link a:hover {
+    color: #92BC00;
+}
+
+.navbar-haut .title-logo {
+    margin-left: 70px;
+    font-size: 30px;
+    font-weight: 300;
+    align-self: flex-end;
+    text-decoration: none;
+}
+
+.mini-navbar {
+    background-color: #2D2D2D;
+}
+
+.mini-navbar-tablet {
+    background-color: #2D2D2D;
+    display: none !important;
+}
+
+.mini-navbar-tablet p {
+    margin: 0;
+    color: #92BC00;
+    font-weight: 300;
+    font-size: 22px;
+}
+
+.mini-navbar .link a {
+    text-decoration: none;
+    color: #92BC00;
+    font-weight: 300;
+    font-size: 22px;
+    transition: all 1s;
+}
+
+.mini-navbar .link a:hover {
+    transform: scale(2);
+}
+
+/**************************************************PAGE ACCUEIL SINGLE-PAGE***************************************************** */
+/*************************************************** LISTE DES EVENEMENTS ****************************************************** */
+/********************************************************** PAGE 1 ************************************************************* */
+
+#myTable_wrapper {
+    margin-top: 50px;
+}
+
+/** input de recherche du tableau **/
+#myTable_filter input {
+    margin-bottom: 30px;
+    background: #fff;
+    border-color: #92BC00;
+    box-shadow: none;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: 300;
+    color: #92BC00;
+}
+
+table .th {
+    font-weight: 200;
+}
+
+span.rouge {
+    color: rgb(199, 0, 0);
+}
+
+span.orange {
+    color: rgb(231, 150, 0);
+}
+
+span.vert {
+    color: forestgreen;
+}
+
+span.vert-clair {
+    color: #92BC00;
+}
+
+hr.home {
+    width: 90%;
+    margin: 150px auto;
+    color: #92BC00;
+}
+
+/**************************************************PAGE ACCUEIL SINGLE-PAGE***************************************************** */
+/********************************************** PARCOURS DECOUVERTE C'EST QUOI ? *********************************************** */
+/********************************************************** PAGE 2 ************************************************************* */
+
+.contenu p {
+    font-size: 20px;
+    font-weight: 300;
+    text-justify: auto;
+    color: #2D2D2D;
+}
+
+/**************************************************PAGE ACCUEIL SINGLE-PAGE***************************************************** */
+/********************************************** QUE PROPOSE PARCOURS DECOUVERTE ************************************************ */
+/********************************************************** PAGE 3 ************************************************************* */
+
+.image {
+    background-color: gray;
+    height: 800px;
+    color: #fff;
+    font-size: 100px;
+    align-items: center;
+}
+
+/******************************************************************************************************************************** */
+/*********************************************************** FOOTER ************************************************************* */
+/******************************************************************************************************************************** */
+
+footer .pied-page {
+    background-color: #2D2D2D;
+}
+
+footer p { 
+    margin-top: 400px; 
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.bloc-logo-partenaire {
+    margin-top: 200px;
+}
+
+footer .logo-partenaire {
+    /* background-color: gray; */
+    width: 200px;
+    height: auto;
+}
+
+footer .logo-partenaire img {
+    width: 100%;
+}
+
+footer .link a {
+    font-size: 20px;
+    font-weight: 300;
+    text-decoration: none;
+    color: #92BC00;
+}
+
+footer hr {
+    width: 90%;
+    margin: auto;
+    height: 1px;
+	border: 0;
+	background-color: #92BC00;
+    color: #92BC00;
+}
+
+.liens-footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer p.copyright {
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/******************************************************* PAGE DE DETAIL ********************************************************* */
+/******************************************************************************************************************************** */
+
+.bloc-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+}
+
+.bloc-details .details {
+    border: 1px solid #2D2D2D;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
+}
+
+.bloc-details .bouton {
+    display: none;
+}
+
+.bouton-connexion-presc {
+    margin-top: 30px;
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 25px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+}
+
+.bloc-bouton-admin {
+    display: flex;
+    justify-content: center;
+}
+
+.bouton-admin {
+    margin-top: 30px;
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 25px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+    width: 500px;
+}
+
+.bouton-admin:hover {
+    color: #bdf100;
+}
+
+.bloc-bouton-org {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bloc-bouton-org .bouton-connexion {
+    width: 300px;
+}
+
+.details, p {
+    padding: 10px;
+    margin: 0;
+    line-height: 20px;
+    font-size: 18px;
+    color: #92BC00;
+}
+
+.details span {
+    color: #2D2D2D;
+}
+
+.details.desc {
+    border: 1px solid #2D2D2D;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.details.desc p {
+    line-height: 30px;
+}
+
+#myTableUtilisateur .bouton {
+    padding-right: 0;
+}
+
+/******************************************************************************************************************************** */
+/****************************************************** PAGE DE CONNEXION ******************************************************* */
+/******************************************************************************************************************************** */
+
+.bouton-connexion {
+    margin-top: 30px;
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 25px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+}
+
+.bouton-connexion:hover {
+    color: #bdf100;
+}
+
+.bouton-tableau {
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgba(45,45,45,1) 0%, rgba(59,58,58,1) 30%, rgba(75,72,72,1) 50%, rgba(59,58,58,1) 70%, rgba(45,45,45,1) 100%);
+    color: #92BC00;
+    font-size: 18px;
+    font-weight: 300;
+    border: none; 
+    box-shadow: none;
+}
+
+.bouton-tableau:hover {
+    color: #bdf100;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#inputEmail, #inputPassword {
+    background: #fff;
+    border-color: #92BC00;
+}
+
+#inputEmail:focus, #inputPassword:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+.mdp-oublie a {
+    font-size: 18px;
+    color: #b1b1b1;
+}
+
+.mdp-oublie a:hover {
+    font-size: 18px;
+    color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/****************************************************** PAGE D'INSCRIPTION ****************************************************** */
+/******************************************************************************************************************************** */
+
+p.text-asterisque {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+span.asterisque {
+    color: rgb(199, 0, 0);
+}
+
+#inscription_form_email, #inscription_form_organisme,
+#inscription_form_nom, #inscription_form_prenom, #inscription_form_partenaire, 
+#role_form_roles, #validate_email_form_email, #password_recovery_form_password_first,
+#password_recovery_form_password_second {
+    border-color: #92BC00;
+}
+
+#inscription_form_email:focus, #inscription_form_organisme:focus,
+#inscription_form_nom:focus, #inscription_form_prenom:focus, #inscription_form_partenaire:focus,
+#role_form_roles:focus, #validate_email_form_email:focus #password_recovery_form_password_first:focus,
+#password_recovery_form_password_second:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/**************************************************** PAGE AJOUT DE CANDIDAT **************************************************** */
+/******************************************************************************************************************************** */
+
+#candidat_form_nom, #candidat_form_prenom {
+    background: #fff;
+    border-color: #92BC00;
+}
+
+#candidat_form_nom:focus, #candidat_form_prenom:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/************************************************* PAGE EVENEMENT ORGANISATEUR ************************************************** */
+/******************************************************************************************************************************** */
+
+.titleEventPast {
+    font-size: 40px;
+    font-weight: 300;
+    color: #92BC00;
+    margin-top: 100px;
+}
+
+/******************************************************************************************************************************** */
+/******************************************** PAGE CREER UN EVENEMENT ORGANISATEUR ********************************************** */
+/******************************************************************************************************************************** */
+
+#evenement_form_nom, #evenement_form_debut,
+#evenement_form_fin, #evenement_form_adresse,
+#evenement_form_codePostal, #evenement_form_ville,
+#evenement_form_places {
+    background: #fff;
+    border-color: #92BC00;
+}
+
+#evenement_form_description {
+    background: #fff;
+    border-color: #92BC00;
+    height: 200px;
+    resize: none;
+}
+#evenement_form_description:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+#evenement_form_nom:focus, #evenement_form_debut:focus,
+#evenement_form_fin:focus, #evenement_form_adresse:focus,
+#evenement_form_codePostal:focus, #evenement_form_ville:focus,
+#evenement_form_places:focus {
+    box-shadow: none;
+    border-color: #92BC00;
+}
+
+/******************************************************************************************************************************** */
+/************************************************* PAGE DETAIL ADMINISTRATEUR *************************************************** */
+/******************************************************************************************************************************** */
+
+#hrAdmin {
+    width: 95%;
+    margin: auto;
+    height: 1px;
+	background-color: #92BC00;
+    color: #92BC00;
+}
+
+#myTableUtilisateur_wrapper, #myTableUtilisateurAttente_wrapper {
+    margin-top: 0px;
+} 
+
+#myTableUtilisateurAttente_filter {
+    display: none;
+}
+
+#myTableUtilisateur_filter {
+    display: none;
+}
+
+/** input de recherche du tableau **/
+#myTableUtilisateur_filter input, #myTableUtilisateurAttente_filter input {
+    margin-bottom: 30px;
+    background: #fff;
+    border-color: #92BC00;
+    box-shadow: none;
+}
+
+/******************************************************************************************************************************** */
+/******************************************* PAGE GESTION DES ROLES ADMINISTRATEUR ********************************************** */
+/******************************************************************************************************************************** */
+
+.bi-pen-fill {
+    color: #92BC00;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid rgb(45,45,45);
+}
+
+.nav-item .nav-link {
+    font-size: 18px;
+    color: #92BC00;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: rgb(45,45,45) rgb(45,45,45) #fff;
+}
+
+.square {
+    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
+    border: #92BC00;
+    border-radius: 6px;
+    background: #92BC00;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.square, .nombre {
+    color:#000;
+}
+
+.orange {
+    color: rgb(255, 141, 35);
+}
+
+.red{
+    color: rgb(199, 0, 0);
+}
+
+.green {
+    color: #92BC00;
+}
+
+.table th {
+    background-color: #2D2D2D;
+}
+
+.sorting_asc, .sorting {
+    color: #92BC00; 
+    font-size: 18px;
+}
+
+#myTablePast th {
+    color: #92BC00; 
+    font-size: 18px;
+}
+
+/******************************************************************************************************************************** */
+/***************************************************** PAGE RESET PASSWORD ****************************************************** */
+/******************************************************************************************************************************** */
+
+p .text-reset {
+    text-align: center;
+}
+
+/************* SCROLLBAR DESIGN *************/
+/* ::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #92BC00;
+} */
+/************* SCROLLBAR DESIGN *************/
+
+
+
+
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+
+
+@media print {
+
+
+    .bloc-logo-partenaire 
+    {
+    display: none;
+    }
+
+    .bouton-admin
+    {
+        display:none;
+    }
+
+    table tbody tr
+    {
+        border-style: none; 
+    }
+}

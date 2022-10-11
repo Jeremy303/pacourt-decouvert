@@ -1,0 +1,38 @@
+<footer>
+    {# affichage des logos des partenariats #}
+    <div class="col-12 d-flex justify-content-center mb-5 d-none">
+        <p>Avec la participation de..(vos partenariats en image)</p> 
+    </div>
+
+    <div class="col-12 d-flex justify-content-evenly bloc-logo-partenaire">
+        <div class="col-1 logo-partenaire"><img src="/images/logos/afpa.png" alt="logo-afpa"></div>
+        <div class="col-1 logo-partenaire"><img src="/images/logos/region.png" alt="logo-region"></div>
+        <div class="col-1 logo-partenaire"><img src="/images/logos/europe.jpg" alt="logo-europe"></div>
+    </div>
+    {# affichage des logos des partenariats #}
+
+    {# pied de page #}
+    <div class="pied-page mt-5 d-flex">
+        <div class="col-12 link text-center">
+            {# liens utiles #}
+            <div class="liens-footer d-none">
+                <a href="#">Crédits - </a>
+                <a href="#">Mentions légales - </a>
+                <a href="#">Politique de protection de données - </a>
+                <a href="#">Conditions générales d'utilisation</a> 
+            </div>
+            {# liens utiles #}
+        
+            <hr>
+
+            {# copyright #}
+            <div class="col-12 d-flex justify-content-center">
+                <p class="text-center copyright">Copyright © 2021 Parcours Découverte</p>
+            </div>
+            {# copyright #}
+        </div>
+    </div>
+
+    </div>
+    {# pied de page #}
+</footer>

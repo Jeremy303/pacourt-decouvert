@@ -1,0 +1,233 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Détail de l'évènement" %}
+
+{% block stylesheets %}
+<style>
+	@media print {
+		.alert { display: none; }
+		.navbar { display: none; }
+		.details { display: none; }
+		.footer-class { display: none; }
+		.title { font-size: 1em; }
+		.title { font-size: 1em; }
+		th::before { content: "";display:none; }
+		th::after { display:none; }
+		.bouton-tableau { display:none; }
+
+	} 
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+	{# nom de l'évènement + bouton ajouter un candidat #}
+
+	<div class="col-12 d-flex justify-content-center mt-5">
+		<h1 class="title">Détails de l'évènement :
+			{{ evenement.nom }}</h1>
+	</div>
+
+
+	{# onglets details évènement + liste des condidats #}
+	<div class="mt-5 col-12 d-flex justify-content-center">
+		<div class="col-11">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item" role="presentation">
+					<a class="details nav-link" aria-current="page" href="{{ path('detail', {'evenement': evenement.id}) }}">Détails de l'évènement</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="liste nav-link active" href="{{ path('listeCandidat', {'evenement': evenement.id}) }}">Liste des candidats</a>
+				</li>
+			</ul>
+			<div class="contenu" id="myTabContent">
+				<div
+					class="pane" id="profile">
+					{# liste des candidats #}
+					<div class="col-12 d-flex justify-content-center">
+						<div class="col-12 collapse" id="ContenuTableauAllUtilisateurs">
+							<table id="myTableUtilisateur" class="table display">
+								<thead>
+									<tr class="align-middle">
+										<th scope="col" class="fw-normal">Prénom</th>
+										<th scope="col" class="fw-normal">Nom</th>
+										<th scope="col" class="fw-normal">Inscrit par</th>
+										{% if is_granted('ROLE_ORGANISATEUR') and not is_granted('ROLE_ADMIN') %}
+											<th scope="col" class="fw-normal">Présence</th>
+											<th scope="col" class="fw-normal">Engagement ultérieur</th>
+											<th scope="col" class="fw-normal"></th>
+										{% endif %}
+                                        {% if is_granted('ROLE_PRESCRIPTEUR') %}
+                                        <th scope="col" class="fw-normal"></th>
+                                        {% endif %}
+									</tr>
+								</thead>
+								<tbody>
+									{% for candidat in listeCandidat %}
+										<tr class="align-middle">
+											<td data-label="Prénom">{{ candidat.prenom }}</td>
+											{# prénom du candidat #}
+											<td data-label="Nom">{{ candidat.nom }}</td>
+											{# nom du candidat #}
+											<td data-label="Inscrit part">{{ candidat.user?candidat.user.prenom:"" ~ ' ' ~ candidat.user?candidat.user.nom:"" ~ ' - ' ~ '(' ~ candidat.user.partenaire?candidat.user.partenaire.organisme:"" ~ ')' }}</td>
+											{# nom et organisme #}
+											{% if is_granted('ROLE_PRESCRIPTEUR') %}
+												<td class="bouton">
+													{% if candidat.user.id == user.id  %}
+														{% if evenement.debut|date('Y-m-d') > "now"|date('Y-m-d') %}
+															{# une fois l'évènement passé impossible de modifier ou supprimer #}
+															<a href="{{ path('candidat_modifier', {'id': candidat.id}) }}">
+																<button class="btn bouton-tableau">modifier</button>
+															</a>
+															{# affichage interaction modifier candidat #}
+															<a href="{{ path('candidat_supprimer', {'id': candidat.id}) }}" onclick="return confirm('êtes-vous sure?')">
+																<button class="btn bouton-tableau">supprimer</button>
+															</a>
+															{# affichage interaction supprimer candidat #}
+														{% endif %}
+													{% endif %}
+												</td>
+											{% endif %}
+											{% if is_granted('ROLE_ORGANISATEUR') and not is_granted('ROLE_ADMIN') %}
+												<td class="bouton js">	{# affichage Absence ou Présence du candidat #}
+													<input onclick="changePresent({{candidat.id}})" class="btn col-6 btn-{{ candidat.present?'success':'danger' }}" id="presence_{{candidat.id}}" value={% if candidat.present == 0 %}"Non"{% else %} "Oui" {% endif %} >
+												</td>
+<<<<<<< HEAD
+                                                <td class="bouton">{# affichage de l'engagement ultérieur ou non du candidat #}
+													<input onclick="changeSuite({{candidat.id}})" class="btn col-5 btn-{{ candidat.suite?'success':'danger' }}" id="suite_{{candidat.id}}" value={% if candidat.suite == 0 %}"Non"{% else %} "Oui" {% endif %} >
+=======
+                                                <td class="bouton js">{# affichage de l'engagement ultérieur ou non du candidat #}
+													<input onclick="changeTextposition({{candidat.id}})" class="btn col-5 btn-{{ candidat.suite?'success':'danger' }}" id="suite_{{candidat.id}}" value={% if candidat.suite == 0 %}"Non"{% else %} "Oui" {% endif %} >
+>>>>>>> e30b3149083ebf4b99faced24efd111dd22ddf39
+												</td>
+													<td class="bouton">
+													{% if candidat.user.id == user.id  %}
+														{% if evenement.debut|date('Y-m-d') > "now"|date('Y-m-d') %}
+															{# une fois l'évènement passé impossible de modifier ou supprimer #}
+															<a href="{{ path('candidat_modifier', {'id': candidat.id}) }}">
+																<button class="btn bouton-tableau">modifier</button>
+															</a>
+															{# affichage interaction modifier candidat #}
+															<a href="{{ path('candidat_supprimer', {'id': candidat.id}) }}" onclick="return confirm('êtes-vous sure?')">
+																<button class="btn bouton-tableau">supprimer</button>
+															</a>
+															{# affichage interaction supprimer candidat #}
+														{% endif %}
+													{% endif %}
+												</td>
+											{% endif %}
+										</tr>
+										
+									{% endfor %}
+									{# fin liste de tout les candidats #}
+								</tbody>
+							</table>
+
+
+							{# une fois l'évènement passé impossible de modifier ou supprimer #}
+							<div class="bloc-bouton-admin mt-5">
+								{% if is_granted('ROLE_ORGANISATEUR') and not is_granted('ROLE_ADMIN') %}
+									{% if evenement.places != evenement.candidats|length %}
+										<a href="{{ path('organisateur_candidat_ajouter', {'id': evenement.id}) }}">
+											<button class="btn bouton-admin">
+												Ajouter un candidat
+											</button>
+										</a>
+									{% else  %}
+										<br>
+									{% endif %}
+								{% elseif is_granted ('ROLE_PRESCRIPTEUR')%}
+									{% if evenement.places != evenement.candidats|length %}
+										<a href="{{ path('prescripteur_ajouter', {'id': evenement.id}) }}">
+											<button class="btn bouton-admin">
+												Ajouter un candidat
+											</button>
+										</a>
+									{% endif %}
+								{% elseif is_granted ('ROLE_ADMIN') %}
+									{% if evenement.places != evenement.candidats|length %}
+										<a href="{{ path('administrateur_ajouter_candidat', {'id': evenement.id}) }}">
+											<button class="btn bouton-admin">
+												Ajouter un candidat
+											</button>
+										</a>
+									{% endif %}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% block javascript %}
+<script>
+// récupérer l'id du bouton qui est cliqué
+// change de texte et de couleur bouton présence
+function changePresent(id){
+	$.ajax(
+		{ 
+			type: 'POST',
+			url: '/organisateur/presence/' + id, 
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json',
+			
+			success: function (data) 
+			{ 
+				elmt = document.getElementById('presence_' + id);
+				resultat = data.present;
+				console.log(id)
+				console.log(elmt.value)
+				console.log(resultat)
+				if (resultat) {
+					elmt.value = "Oui",
+					$(elmt).removeClass("btn-danger");
+					$(elmt).addClass("btn-success");
+					}
+				else { 
+					elmt.value = "Non",
+					$(elmt).removeClass("btn-success");
+					$(elmt).addClass("btn-danger");
+				}
+			}
+		}); 
+
+}
+
+// change de texte et de couleur bouton suite
+function changeSuite(id){
+	$.ajax(
+		{ 
+			type: 'POST',
+			url: '/organisateur/suite/' + id, 
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json',
+			
+			success: function (data) 
+			{ 
+				elmt = document.getElementById('suite_' + id);
+				resultat = data.suite;
+				console.log(id)
+				console.log(elmt.value)
+				console.log(resultat)
+				if (resultat) {
+					elmt.value = "Oui",
+					$(elmt).removeClass("btn-danger");
+					$(elmt).addClass("btn-success");
+					}
+				else { 
+					elmt.value = "Non",
+					$(elmt).removeClass("btn-success");
+					$(elmt).addClass("btn-danger");
+				}
+			}
+		}); 
+} 
+
+
+</script>
+{% endblock %}
+{% endblock %}
+
+

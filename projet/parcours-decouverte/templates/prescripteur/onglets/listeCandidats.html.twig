@@ -1,0 +1,29 @@
+{# début liste des candidats inscrit du prescripteur #}
+<div class="col-12 d-flex justify-content-center">
+    <div class="col-12 collapse" id="ContenuTableauAllUtilisateurs">
+        <table id="myTableUtilisateur" class="table display">
+            <thead>
+                <tr class="align-middle">
+                    <th scope="col" class="fw-normal">Prénom</th>
+                    <th scope="col" class="fw-normal">Nom</th>
+                    <th scope="col" class="fw-normal"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {# début liste des candidats inscrit de d'admin #}
+                 {% for liste2 in listeCandidat %}
+                <tr class="align-middle">
+                    <td data-label="Prénom">{{ liste2.prenom }}</td> {# prénom du candidat #}
+                    <td data-label="Nom">{{ liste2.nom }}</td>{# nom du candidat #}                             
+                    <td class="text-end bouton">
+                         <a href="{{ path('prescripteur_modifier', {'id': liste2.id}) }}"><button class="btn bouton-tableau">modifier</button></a> {# affichage interaction modifier candidat #}
+                         <a href="{{ path('prescripteur_supprimer', {'id': liste2.id}) }}" onclick="return confirm('êtes-vous sure?')"><button class="btn bouton-tableau">supprimer</button></a> {# affichage interaction supprimer candidat #} 
+                    </td> 
+                </tr>
+                {% endfor %}
+                {# fin liste des candidats inscrit du prescripteur #}
+            </tbody>
+        </table>
+    </div>
+</div>

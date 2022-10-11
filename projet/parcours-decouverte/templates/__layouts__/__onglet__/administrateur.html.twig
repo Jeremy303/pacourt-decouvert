@@ -1,0 +1,18 @@
+{% if app.user %}
+{% if ("ROLE_ADMIN" in app.user.roles) %}
+
+<div class="col-xl-auto col-lg-auto link">
+    <a href="{{ path('administrateur') }}">Administration</a> 
+</div>
+<div class="col-xl-auto col-lg-auto link">
+    <a href="{{ path('utilisateurs_liste') }}">Gestion des rôles</a> 
+</div>
+<div class="col-xl-auto col-lg-auto link">
+    <a href="{{ path('administrateur_creer_evenement') }}">Créer un évènement</a> 
+</div>
+{# <div class="col-xl-auto col-lg-auto link">
+    <a href="{{ path('administrateur_graphiques') }}">Graphique</a> 
+</div> #}
+
+{% endif %}
+{% endif %}

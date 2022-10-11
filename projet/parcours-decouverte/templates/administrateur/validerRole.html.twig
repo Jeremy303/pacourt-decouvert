@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Choisir un rôle utilisateur" %}
+
+{% block body %}
+
+<div class="col-12 d-flex justify-content-center">
+    <h1 class="title">Choisir un rôle</h1>
+</div>
+
+{{ form_start(form) }}
+<div class="col-12 d-flex justify-content-center mt-1">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        {{ form_row(form.roles, {attr: {class: 'form-select'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-1">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        {{ form_row(form.email, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-1">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        {{ form_row(form.nom, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-1">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        {{ form_row(form.prenom, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-1">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        {{ form_row(form.organisme, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-1">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        {{ form_row(form.partenaire, {attr: {class: 'form-select'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-1">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        <button class="btn w-100 bouton-connexion mt-1">Enregistrer</button>
+    </div>
+</div>
+{{ form_end(form) }}
+  
+  
+
+{% endblock %}

@@ -1,0 +1,91 @@
+#!/usr/bin/php
+<?php
+
+    const REPO = 15;
+    const BRANCH = 30;
+
+    echo "fetching remote...";
+    shell_exec("git fetch --all 2>&1");
+    echo "ok\n";
+
+    $re = shell_exec("git remote");
+    $re = array_filter(explode("\n", $re));
+    array_unshift($re, "local");
+
+    $br = shell_exec("git branch --list -a --format='%(refname)'");
+    $br = array_filter(explode("\n", $br));
+
+    $branches = [];
+    foreach ($br as $v) {
+        $t = explode("/", $v);
+        $last = end($t);
+        if ($last !=="HEAD") $branches[] = $last;
+    }
+
+    $branches = array_unique($branches);
+
+    $remotes=[];
+    foreach($re as $r) {
+        $remotes[$r] = array_fill_keys($branches, "n/a");
+    }
+
+    $max = 0;
+    foreach ($remotes as $kr => $vr) {
+        foreach ($vr as $k => $v) {
+            if ($kr == "local") {
+                $b = $k;
+                $ref = "refs/heads/$b";
+            }
+            else {
+                $b = $kr . "/" . $k;
+                $ref = "refs/remotes/$b";
+            }
+            if (in_array($ref, $br)) {
+                $res = shell_exec("git log $b --pretty=oneline | wc -l 2>/dev/null");
+            }
+            else {
+                $res = "-";
+            }
+            $res = trim($res);
+            if ($res>$max) $max = $res;
+            $remotes[$kr][$k] = $res;
+        }
+    }
+
+
+    echo str_repeat(" ", BRANCH) . "┌" . join("┬", array_fill(0, count($remotes), str_repeat("─", REPO-2))) . "┐\n";
+    echo str_repeat(" ", BRANCH) . "";
+    foreach($remotes as $kr => $vr) {
+        echo "│" . str_pad($kr, REPO-2, " ", STR_PAD_BOTH);
+    }
+    echo "│\n";
+    echo "┌" . str_repeat("─", BRANCH-1) . "┼" . join("┼", array_fill(0, count($remotes), str_repeat("─", REPO-2))) . "┤\n";
+    foreach($branches as $b) {
+        echo "│" . str_pad($b, BRANCH-1, " ", STR_PAD_RIGHT);
+        foreach($remotes as $kr => $vr) {
+            echo "│";
+            echo pp($vr[$b]);
+        }
+        echo "│\n";
+        if ($b != end($branches)) {
+            echo "├" . str_repeat("─", BRANCH-1) . "┼" . join("┼", array_fill(0, count($remotes), str_repeat("─", REPO-2))) . "┤\n";
+        }
+        else
+            echo "└" . str_repeat("─", BRANCH-1) . "┴" . join("┴", array_fill(0, count($remotes), str_repeat("─", REPO-2))) . "┘\n";
+    }
+    
+
+    function pp($v) {
+        global $max;
+    
+        if ($v=="-") {
+            return str_pad(sprintf ("%5s", $v), REPO-2, " ", STR_PAD_BOTH);
+        }
+        else if ($v==$max) {
+            return str_pad(sprintf ("\e[32m%5d\e[0m", $v), REPO+7, " ", STR_PAD_BOTH);
+        }
+        else {
+            return str_pad(sprintf ("%5d", $v), REPO-2, " ", STR_PAD_BOTH);
+        }
+        
+    }

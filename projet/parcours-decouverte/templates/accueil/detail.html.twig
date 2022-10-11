@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Détail de l'évènement" %}
+
+{% block body %}
+
+
+{# nom de l'évènement + bouton ajouter un candidat #}
+
+<div class="col-12 d-flex justify-content-center mt-5">
+    <h1 class="title">Détails de l'évènement : {{ evenement.nom }}</h1>
+</div>
+
+
+{# onglets details évènement + liste des condidats #}
+    <div class="mt-5 col-12 d-flex justify-content-center">
+        <div class="col-11">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                <a class="details nav-link active" aria-current="page" href="{{ path('detail', {'evenement': evenement.id}) }}">Détails de l'évènement</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class=" liste nav-link" href="{{ path('listeCandidat', {'evenement': evenement.id}) }}">Liste des candidats</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    {# détails de l'évèvements #}
+                        <div class="bloc-details">
+                            <div class="details">
+                                <p>Nom de l'évènement : <span>{{ evenement.nom }}</span> </p><br> {# nom de l'évènements #}
+                                <p>Nom de l'organisme : <span>{{ evenement.user.partenaire?evenement.user.partenaire.organisme:"" }}</span></p><br> {# nom de l'organisme #}
+                                <p>Lieu : <span>{{evenement.adresse ~ ' ' ~ evenement.codePostal ~ ', ' ~ evenement.ville }}</span></p>
+                            </div>
+                            <div class="details middle">
+                                <p>Date de début : <span>{{ evenement.debut|date("d/m/Y") }}</span></p><br>
+                                <p>Date de fin : <span>{{ evenement.fin|date("d/m/Y") }}</span></p><br>
+                                <p>Temps restant avant l'évènement : <span>{% set difference = date().diff(date(evenement.debut)) %} {# nombre de jour(s) restant avant le début de l'évènement #}
+                                        {% set dateDiffdays = difference.days %}
+                                        {% set dateDiffhours = difference.h %}
+                                        {% set dateInvert = difference.invert %}
+                                            {% if dateInvert == 1 %}
+                                            <span>Évènement en cours </span>
+
+                                            {% elseif dateDiffdays == 0 and dateInvert != 1 %}
+                                            <span>Évenement prévu demain</span>
+
+                                            {% elseif dateDiffdays != 0 %}
+                                            <span>{{ (dateDiffdays )+ 1 }} jours</span>
+
+                                            {% endif %}</p><br>
+                                        {# {{dump(difference)}} #}
+                                <p>Durée de l'évènement :
+                                {% set difference = date(evenement.debut).diff(date(evenement.fin)) %} {# nombre de jour(s) de la durée de l'évènement #}
+                                    {% set dateDiff = difference.days %}
+                                    {% if dateDiff == 1 or evenement.debut == evenement.fin %}
+                                    <span>1 jour</span>
+                                    {% else %}
+                                    <span>{{ dateDiff + 1}} jours</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="details end">
+                                <p>Nombre de places total : <span>{{ evenement.places }}</span></p><br>
+                                <p>Nombre de candidats inscrit : <span>{{ evenement.candidats|length }}</span></p><br>
+                                <p>Places restantes : <span>{{ evenement.places - evenement.candidats|length }}</span></p>
+                                </p>
+                            </div>
+                        </div>
+
+                        {# description de l'évènement #}
+                        <div class="details desc mt-5">
+                            <p>Descritpion: <br>
+                                <span>{{ evenement.description }}</span>
+                            </p>
+                        </div>
+
+                        {% if evenement.fin|date('Y-m-d') > "now"|date('Y-m-d') %} {# une fois l'évènement passé impossible de modifier ou supprimer #}
+                        <div class="mt-5 bloc-bouton-org">
+
+                            {% if is_granted('ROLE_ORGANISATEUR') and (app.user.id == evenement.user.id) %}
+                            <div>{# BOUTON SUPPRIMER L'EVENEMENT #}
+                                <a href="{{ path('detail_supprimer_evenement', {'id': evenement.id}) }}" onclick="return confirm('êtes-vous sure?')"><button class="btn bouton-connexion">supprimer l'évènement</button></a>
+                            </div>
+                            <div>{# BOUTON MODIFIER L'EVENEMENT #}
+                                <a href="{{ path('detail_modifier_evenement', {'id': evenement.id}) }}"><button class="btn bouton-connexion">modifier l'évènement</button></a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {# fin description de l'évènement #}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

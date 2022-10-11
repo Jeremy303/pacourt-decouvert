@@ -1,0 +1,12 @@
+{% if app.user %}
+{% if "ROLE_ORGANISATEUR" in app.user.roles %}
+
+<div class="col-xl-auto col-lg-auto link">
+    <a class="ps-5" href="{{ path('organisateur') }}">Organisateur</a> 
+</div>
+<div class="col-xl-auto col-lg-auto link">
+    <a class="ps-5" href="{{ path('organisateur_creer') }}">Créer un évènement</a> 
+</div>
+
+{% endif %}
+{% endif %}

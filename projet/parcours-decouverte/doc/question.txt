@@ -1,0 +1,5 @@
+fait-on une requete preparé pour supprimer ou archiver les évènements ancient?
+
+fait-on une requete préparé pour supprimer les noms des participant à un évènement une fois celui-ci terminé?
+
+dateTime ou date?

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title "modifier un organisme" %}
+
+{% block body %}
+
+{{ form_start(form) }}
+
+{# **************************************************** #}
+{# champs organisme a modifier (j'ai fais un copier :d) #}
+{# **************************************************** #}
+<div class="col-12 d-flex justify-content-center mt-5">
+    <div class="col-4">
+        <label for="candidat_form_nom"><span class="asterisque">* </span>Nom du candidat</label>
+        {{ form_row(form.organisme, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+{# bouton ajout du candidat #}
+<div class="col-12 d-flex justify-content-center mt-5">
+    <div class="col-4">
+        <button class="btn w-100 bouton-connexion" type="submit">
+            Ajouter un organisme
+        </button>
+    </div>
+</div>
+{{ form_end(form) }}
+
+{% endblock %}

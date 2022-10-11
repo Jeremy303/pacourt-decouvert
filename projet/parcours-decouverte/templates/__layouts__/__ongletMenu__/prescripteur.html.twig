@@ -1,0 +1,7 @@
+{% if app.user %}
+{% if ( "ROLE_PRESCRIPTEUR" in app.user.roles) %}
+
+<li><a href="{{ path('prescripteur') }}">Prescripteur</a></li>   
+
+{% endif %}
+{% endif %}

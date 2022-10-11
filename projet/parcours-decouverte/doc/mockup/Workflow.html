@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <style>
+    tr>td:first-child {cursor: grab;}.pdf{justify-content:center}.embed{height:600px;}.c_blue{color:#87CEEB;background: #333;width:max-content;padding:5px;text-align:center;border-radius:3px;}
+    .c_navy{color:navy};.c_gray{color:gray};.c_dark{color:#333};
+  </style>
+  <script defer>
+    function copy(id) {
+      const el = document.createRange();
+      el.selectNode(document.getElementById(id));
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(el);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+    }
+  </script>
+  <title>Maquettage</title>
+</head>
+<body>
+    <section class="card border-info m-5 p-2">
+      <h3 class="card-header">Schémas structurelle</h3>
+      <p class="card-text">Ce type de Schémas n'est pas demandée, en revanche il me sert pour l'élaboration de la maquette.</p>
+      <figure class="row">
+        <img src="assets/img/structure_parcours_decouverte.png" alt="shémas de structure du site" class="d-block col-auto">
+      </figure>
+      <p class="card-text">Je part d'un principe que l'interface <span class="text-primary">connexion</span> est une implémentation quelque soit la partie (front ou back office) inutile de la répétée.</p>
+    </section>
+    <section class="card border-info m-5 p-2">
+      <h3 class="card-title">Wireframe</h3>
+      <p class="card-text">Wireframe pour l'Accueil. Pensant qu'il y as des candidats il faut donc une partie front-office.</p>
+      <figure class="row pdf">
+        <embed class="col-10 embed" src="assets/ressources/wireframe.pdf" alt="frame accueil" title="PDF de la frame Accueil">
+      </figure>
+      <article>
+        <h4 class="card-title">Mémo pour Figma</h4>
+        <p class="card-text">Taille de la Frame principal : W : 1440  -  H : 4000</p>
+      </article>
+    </section>
+    <section class="card border-info m-5 p-2">
+      <h3 class="card-title">Palettes de couleur</h3>
+      <p class="card-text d-block c_blue">Bleu ciel</p>
+      <p class="card-text c_navy">Bleu marine</p>
+      <p class="card-text c_gray">Quelque teinte de gris</p>
+      <p class="card-text c_dark">semi noir</p>
+    </section>
+    <section class="card border-info m-5 p-2">
+      <h3 class="card-title">L'Accueil (choisir)</h3>
+      <p class="card-text">Dans cette config, il y as la sidebar, la sidebar peut contenir différents mot clée pour indexée directement l'organisme en question, on peu aussi ce servir d'un input date, pour encore filtrée.. Cette page est volontairement réduite.<br>
+      L'ajax peut être appliquée. Bémol : Le responsive sa vas être l'éclate.
+      </p>
+      <p class="card-text">
+        L'autre accueil est un peu plus complète mais n'as de sidebar, toutefois ajax peut être calé au niveau des thead du tableau, il suffirais d'imaginais que le visiteur clique sur Date, pour mettre en avant les premières date. Ou de cliquée sur Organisme pour remontée chaque organisme par ordre alphabétique. L'ajax peut être intereressant si l'on fixe une limite au nombre de session, par exemple max 10 instances de session visible, l'ajax permettrait de mettre les dates ou les organismes a jour sans rafraichissement de page.
+      </p>
+      <figure class="row pdf">
+        <embed class="col-10 embed" src="assets/ressources/proto_01.pdf" alt="frame accueil" title="PDF de la frame Accueil">
+      </figure>
+      <p class="card-text">
+
+      </p>
+      <p class="card-text">Pour une vision d'ensemble : </p>
+      <a href="https://www.figma.com/file/v23gOQeRLMyTRi2od7bexQ/proto_01?node-id=3%3A9" class="c_navy" target="_blank">Les mockups</a>
+      <p class="card-text">
+        l'input pour la référence sur la page inscription devras être un select avec les noms des références d'organismes (exemple : pole emploi - afpa - etc).
+      </p>
+      <p class="card-text">
+        pour la partie admin il faut voir se qu'il est le mieux, si ont as le droit a easyAdmin par exemple. ou si l'ont doit vraiment faire quelque chose de plus simple / compliquer.
+      </p>
+    </section>
+</body>
+</html>
+<p>
+
+</p>

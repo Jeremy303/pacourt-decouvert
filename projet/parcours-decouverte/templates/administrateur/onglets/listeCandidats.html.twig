@@ -1,0 +1,51 @@
+{# Liste de tout les candidats #}
+<div class="col-12 d-flex justify-content-center">
+    <div class="col-12 collapse" id="ContenuTableauAllUtilisateurs">
+        <table id="myTableUtilisateur" class="table display">
+            <thead>
+                <tr class="align-middle">
+                    <th scope="col" class="fw-normal">Prénom</th>
+                    <th scope="col" class="fw-normal">Nom</th>
+                    <th scope="col" class="fw-normal">Inscrit par</th>
+                    <th scope="col" class="fw-normal"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for liste2 in listeCandidat %}
+                <tr class="align-middle">
+                    <td data-label="Prénom">{{ liste2.prenom }}</td> {# prénom du candidat #}
+                    <td data-label="Nom">{{ liste2.nom }}</td>{# nom du candidat #}
+                    <td data-label="Inscrit part">{{ liste2.user.prenom ~ ' ' ~ liste2.user.nom ~ ' - ' ~ '(' ~ liste2.user.partenaire?liste2.user.partenaire.organisme:"" ~ ')' }}</td> {# nom et organisme #}
+
+                    {% for liste in listeEvenement %}
+                    <td class="text-end bouton">
+                    {% if liste.debut|date('Y-m-d') > "now"|date('Y-m-d') %} {# une fois l'évènement passé impossible de modifier ou supprimer #}
+                        <a href="{{ path('administrateur_modifier_candidat', {'id': liste2.id}) }}"><button class="btn bouton-tableau">modifier</button></a> {# affichage interaction modifier candidat #}
+                        <a href="{{ path('administrateur_supprimer_candidat', {'id': liste2.id}) }}" onclick="return confirm('êtes-vous sure?')"><button class="btn bouton-tableau">supprimer</button></a> {# affichage interaction supprimer candidat #} 
+                    {% endif %} 
+                    </td>
+                    {% endfor %} 
+                </tr>
+                {% endfor %}
+                {# fin liste de tout les candidats #}
+            </tbody>
+        </table>
+
+        {% for liste in listeEvenement %}
+        {% if liste.fin|date('Y-m-d') > "now"|date('Y-m-d') %} {# une fois l'évènement passé impossible de modifier ou supprimer #}
+        <div class="bloc-bouton-admin mt-5">
+            {% if app.user %}
+            {% if ("ROLE_ADMIN" in app.user.roles) %} 
+            <a href="{{ path('administrateur_ajouter_candidat', {'id': liste.id}) }}">
+                <button class="btn bouton-admin">
+                    Ajouter un candidat
+                </button>
+            </a>
+            {% endif %}
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

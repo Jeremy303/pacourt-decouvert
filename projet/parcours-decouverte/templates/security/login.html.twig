@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Connexion' %}
+
+{% block body %}
+
+{# header navigation #} 
+
+<div class="col-12 d-flex justify-content-center mt-5">
+    <h1 class="title">Connexion</h1> 
+</div>
+
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            Connecté sous {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnection</a>
+        </div>
+    {% endif %}
+    
+    {# champ email #}
+    <div class="col-12 d-flex justify-content-center mt-5">
+        <div class="col-11 col-lg-6 col-xxl-4">
+            <label for="inputEmail">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 18 20">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                </svg>
+                    Email
+            </label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        </div>
+    </div>
+    {# champ email #}
+
+    {# champ mot de passe #}
+    <div class="col-12 d-flex justify-content-center mt-4">
+        <div class="col-11 col-lg-6 col-xxl-4">
+            <label for="inputPassword">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-lock" viewBox="0 0 18 20">
+                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+                </svg>
+                    Mot de passe
+            </label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+            >
+        </div>
+    </div>
+    {# champ mot de passe #}
+
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    {# bouton de connexion #}
+    <div class="col-12 d-flex justify-content-center mt-5">
+        <div class="col-11 col-lg-6 col-xxl-4">
+            <button class="btn w-100 bouton-connexion" type="submit">
+                Se connecter
+            </button>
+        </div>
+    </div>
+    {# bouton de connexion #}
+
+    {# mot de passe oublié #}
+    <div class="col-12 d-flex justify-content-center mt-5">
+        <div class="text-center mdp-oublie">
+            <a href="{{ path('valideEmail')}}">mot de passe oublié</a>
+        </div>
+    </div>
+    {# mot de passe oublié #}
+</form>
+
+{#footer #} 
+{% endblock %}

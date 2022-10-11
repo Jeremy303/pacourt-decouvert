@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Modifier un candidat" %}
+
+{% block body %}
+
+<div class="col-12 d-flex justify-content-center">
+    <h1 class="title">Modifier un candidat</h1>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-3">
+    <p class="text-asterisque text-muted">Les champs munis d'un astérisque (*) sont obligatoires.</p>
+</div>
+
+{{ form_start(form) }}
+<div class="col-12 d-flex justify-content-center mt-5">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        <label for="candidat_form_nom"><span class="asterisque">* </span>Nom du candidat</label>
+        {{ form_row(form.nom, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-5">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        <label for="candidat_form_prenom"><span class="asterisque">* </span>Prénom du candidat</label>
+        {{ form_row(form.prenom, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+{# bouton modifier du candidat #}
+<div class="col-12 d-flex justify-content-center mt-5">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        <button class="btn w-100 bouton-connexion" type="submit">
+            Modifier le candidat
+        </button>
+    </div>
+</div>
+{{ form_end(form) }}
+
+
+
+{% endblock %}

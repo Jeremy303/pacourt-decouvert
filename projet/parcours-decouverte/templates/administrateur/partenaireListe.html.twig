@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Administrateur" %}
+
+{% block body %}
+
+{% for liste in listePartenaire %}
+<div>{{ liste.organisme }}
+</div><br>
+
+{% endfor %}
+
+{% endblock %}

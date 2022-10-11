@@ -1,0 +1,142 @@
+{# {% extends 'base.html.twig' %} #}
+
+
+
+{# navbar #}
+<div class="container-fluid p-0">
+    <nav class="col-12 navbar-haut d-flex">
+        <div class="col-xl-auto col-lg-auto title-logo">
+            arcours découverte
+        </div>
+        {% if not app.user %} 
+        <div class="col-xl-auto col-lg-auto link">
+            <a class="ps-5" href="{{ path('accueil') }}">Accueil</a> 
+        </div>
+        {% endif %}
+        {# onglets autorisés pour l'administrateur #}
+        {{ include('/layouts/onglet/administrateur.html.twig') }}
+
+        {# onglets autorisés pour l'organisateur #}
+        {{ include('/layouts/onglet/organisateur.html.twig') }}
+
+        {# onglets autorisés pour le prescripteur #}
+        {{ include('/layouts/onglet/prescripteur.html.twig') }} 
+        
+        
+
+        <!-- icon menu < 1024px -->
+        <div class="col text-end icon-menu">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-justify" id="icon-menu" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- icon menu croix pour fermer le menu < 1024px -->
+        <div class="col text-end icon-menu-croix">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-x-lg" id="icon-menu-croix" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+            </a>
+        </div> 
+
+        <div class="sidebar">
+            <div class="menu">
+                Menu
+            </div>
+            <!-- Affichage pour tablette < 1024px si connecté -->
+            {% if app.user %} 
+                <div class="connexion-info">
+                    <span>{{ app.user.email }}</span>
+                </div>
+            {% else %}
+            <!-- Affichage pour tabletle < 1024px si non connecté -->
+            <div class="connexion-info d-flex justify-content-around">
+                <a href="{{ path('app_login') }}">Se connecter</a> 
+                <a href="{{ path('inscription') }}">S'inscrire</a> 
+            </div>
+            {% endif %}
+
+            <!--Partie accueil déroulant < 1024px -->
+            <div class="accueil-btn">
+                <a data-bs-toggle="collapse" href="#accueil-show" role="button" aria-expanded="false" aria-controls="accueil-show">
+                    Accueil
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 18">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="collapse" id="accueil-show">
+                <ul class="p-0">
+                    <li><a href="{{ path('accueil') }}#ancre-1">Liste des prochains évènements</a></li>
+                    {# <li><a href="{{ path('accueil') }}#ancre-2">Parcours découverte c'est quoi ?</a></li>
+                    <li><a href="{{ path('accueil') }}#ancre-3">Que propose parcours découverte</a></li>
+                    <li><a href="{{ path('accueil') }}#ancre-4">Comment y participer ?</a></li> #}
+                </ul>
+            </div>
+
+            {% if app.user %}
+            <!--Partie dashboard admin-pres-org déroulant < 1024px -->
+            <div class="dashboard-btn">
+                <a data-bs-toggle="collapse" href="#dashboard-show" role="button" aria-expanded="false" aria-controls="dashboard-show">
+                    Dashboard
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 18">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                </a>
+            </div>
+
+            
+            <div class="collapse" id="dashboard-show">
+                <ul class="p-0">
+                    {# onglets autorisés pour l'administrateur #}
+                    {{ include('/layouts/ongletMenu/administrateur.html.twig') }}
+                    {# onglets autorisés pour l'organisateur #}
+                    {{ include('/layouts/ongletMenu/organisateur.html.twig') }}
+                    {# onglets autorisés pour le prescripteur #}
+                    {{ include('/layouts/ongletMenu/prescripteur.html.twig') }}
+                </ul>
+            </div>
+
+            <!-- Affichage pour tablette < 1024px pour la déconnection -->
+            <div class="deconnection d-flex justify-content-around">
+                <a href="{{ path('app_logout') }}">Se déconnecter</a> 
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+</div> 
+
+{# mini navbar #}
+<div class="col-12 d-flex justify-content-evenly mini-navbar py-1">
+    <div class="row-4 link d-none">
+       <a href="{{ path('accueil') }}#ancre-1">Liste des prochains évènements</a> 
+    </div>
+    <div class="row-4 link d-none">
+       <a href="{{ path('accueil') }}#ancre-2">Parcours découverte c'est quoi ?</a> 
+    </div>
+    <div class="row-4 link d-none">
+       <a href="{{ path('accueil') }}#ancre-3">Que propose parcours découverte</a> 
+    </div>
+    <div class="row-4 link d-none">
+       <a href="{{ path('accueil') }}#ancre-4">Comment y participer ?</a> 
+    </div> 
+</div>
+{# mini navbar #}
+
+<!-- Affichage remplacement mini-navbar en mode tablette < 1024px -->
+<div class="col-12 d-flex mini-navbar-tablet py-1">
+    <p>Découvrez tous nos évènements ! </p> 
+</div>
+<!-- Affichage remplacement mini-navbar en mode tablette < 1024px -->
+
+{# logo parcours découverte #}
+<div class="div_logo">
+            
+</div>
+{# logo parcours découverte #}
+

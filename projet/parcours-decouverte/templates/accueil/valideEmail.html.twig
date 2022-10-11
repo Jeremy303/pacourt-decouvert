@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title "vérification d'email" %}
+
+{% block body %}
+
+
+<div class="col-12 d-flex justify-content-center">
+    <h1 class="title">Réinitialiser votre mot de passe</h1> 
+</div>
+
+{{ form_start(form) }}
+
+<div class="col-12 d-flex justify-content-center mt-5">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        {{ form_row(form.email, {attr: {class: 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-5">
+    <div class="col-11 col-lg-6 col-xxl-4">
+        <button class="btn w-100 bouton-connexion" type="submit">
+            envoyer
+        </button>
+    </div>
+</div>
+{{ form_end(form) }}
+
+{% endblock %}
